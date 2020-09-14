@@ -15,14 +15,15 @@ struct Order: Codable, Identifiable {
     var orderNumber: String
     var orderDateTime: String
     var lineItems: [Item]
-    var stateMachineState: State
+    var deliveries: [Delivery]
     
     var lineItemsCount: Int {
         return lineItems.count
     }
     
-    var stateName: String {
-        return technicalName.technicalName
+    var shippingMethod: String {
+        //return deliveries[0].shippingMethod
+        return "a"
     }
     //
 

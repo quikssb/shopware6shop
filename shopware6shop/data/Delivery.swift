@@ -8,8 +8,8 @@
 
 import Foundation
 
-struct State:Decodable, Identifiable {
+struct Delivery:Codable, Identifiable {
     
     var id: String
-    var technicalName:String
+    //var shippingMethod:String
 }

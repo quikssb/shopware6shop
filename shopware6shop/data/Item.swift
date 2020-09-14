@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct Item:Decodable, Identifiable {
+struct Item:Codable, Identifiable {
     
     var id: String
     var productId: String

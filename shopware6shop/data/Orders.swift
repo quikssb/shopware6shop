@@ -9,7 +9,7 @@
 import Foundation
 
 //todo: geht auch struct?
-class Orders:ObservableObject, Decodable {
+class Orders:ObservableObject, Codable {
     
     var data = [Order]()
 }
