@@ -23,6 +23,9 @@ struct NetworkService {
                     if let value = response.value {
                         token = value.access_token
                         getOrders(completion: completion)
+                    } else {
+                        //(with error)
+                        completion([Order]())
                     }
         }
         
@@ -59,10 +62,14 @@ struct NetworkService {
                     } else if (statusCode == 401) {
                         
                         login(completion: completion)
+                    } else {
+                        
+                        //(with error)
+                        completion([Order]())
                     }
                 }
                 else {
-                    print(response.error)
+                    //(with error)
                     completion([Order]())
                 }
         }
