@@ -6,22 +6,25 @@
 //  Copyright © 2020 pickware. All rights reserved.
 //
 
+import Alamofire
 import Foundation
 
 struct NetworkService {
 
-    let loginURL = "https://next.pickware.de/api/oauth/token"
-    let getOrderURL = "https://next.pickware.de/api/v3/search/order"
+    static let loginURL = "https://next.pickware.de/api/oauth/token"
+    static let getOrderURL = "https://next.pickware.de/api/v3/search/order"
     
     static func login() {
         
         DispatchQueue.global(qos: .userInteractive).async {
             
             AF.request(loginURL,
-                       method: .post).responseDecodable(of:Response.self) { response in
+                       method: .post,
+                       parameters: LoginRequest.testuser,
+                       encoder: JSONParameterEncoder.default).responseDecodable(of:LoginResponse.self) { response in
                         
                     if let value = response.value {
-                        self.results = value.results
+                        print(response)
                     }
             }
         }

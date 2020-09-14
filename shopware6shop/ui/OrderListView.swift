@@ -25,7 +25,7 @@ struct OrderListView: View {
             }
             //.listStyle(GroupedListStyle())
             .navigationBarTitle("Shopware 6 Orders")
-        }
+        }.onAppear(perform: NetworkService.login)
     }
 }
 
