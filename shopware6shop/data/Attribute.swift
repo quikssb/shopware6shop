@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct Attributes: Codable {
+struct Attribute: Codable {
     
     var orderNumber: String
     var orderDateTime: String
