@@ -30,11 +30,14 @@ struct OrderListView: View {
     
     private func loadOrders() {
         
-        NetworkService.getOrders(completion: {orders in
+        NetworkService.getOrders(completion: {orderResponse in
             
-            //todo: create little data class and return this
-            //if error show toast
-            self.orders.orders = orders
+            if let ordersFromServer = orderResponse.orders {
+                self.orders.orders = ordersFromServer.data
+            } else {
+                //TODO: show little message, equivalent to Toast in Android
+                print(orderResponse.printedError ?? "An error occured")
+            }
         })
     }
 }
