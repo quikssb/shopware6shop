@@ -1,5 +1,5 @@
 //
-//  Orders.swift
+//  ObservedOrders.swift
 //  shopware6shop
 //
 //  Created by Marcel Romagnuolo on 14.09.20.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-class Orders:Codable {
+class ObservedOrders:ObservableObject {
     
-    var data = [Order]()
+    @Published var orders = [Order]()
 }

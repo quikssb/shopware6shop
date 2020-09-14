@@ -10,7 +10,7 @@ import SwiftUI
 
 struct OrderListView: View {
     
-    var orders = Orders()
+    @EnvironmentObject var orders : ObservedOrders
     
     var body: some View {
     
@@ -19,7 +19,7 @@ struct OrderListView: View {
         
         NavigationView {
             List {
-                ForEach(self.orders.data) { item in
+                ForEach(self.orders.orders) { item in
                     OrderRowView(item: item)
                 }
             }
