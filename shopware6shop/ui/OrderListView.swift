@@ -25,7 +25,15 @@ struct OrderListView: View {
             }
             //.listStyle(GroupedListStyle())
             .navigationBarTitle("Shopware 6 Orders")
-        }.onAppear(perform: NetworkService.login)
+        }.onAppear(perform: loadOrders)
+    }
+    
+    private func loadOrders() {
+        
+        NetworkService.login(completion: {orders in
+            
+            self.orders.orders = orders
+        })
     }
 }
 

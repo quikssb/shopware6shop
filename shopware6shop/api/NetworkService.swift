@@ -16,7 +16,7 @@ struct NetworkService {
     
     static var token:String = ""
     
-    static func login() {
+    static func login(completion: @escaping ([Order]) -> Void) {
             
         AF.request(loginURL,
                        method: .post,
@@ -25,13 +25,13 @@ struct NetworkService {
                         
                 if let value = response.value {
                     token = value.access_token
-                    getOrders()
+                    getOrders(completion: completion)
                 }
             }
         
     }
     
-    static func getOrders() {
+    static func getOrders(completion: @escaping ([Order]) -> Void) {
         
         let headers: HTTPHeaders = [
             "Authorization": "Bearer \(token)",
@@ -81,6 +81,7 @@ struct NetworkService {
                         
                     if let value = response.value {
                         print(response)
+                        completion(value.data)
                     } else {
                         print(response.error)
                     }
