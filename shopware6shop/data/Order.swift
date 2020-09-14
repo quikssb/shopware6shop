@@ -8,13 +8,15 @@
 
 import Foundation
 
-struct Order: Codable, Equatable, Identifiable {
-    var id: UUID
-    var date: String
-    var productCount: Int
-    var deliveryType: String
+struct Order: Codable, Identifiable {
+    var id: String
+   // var attributes: Attributes
+    //var productCount: Int
+    //var deliveryType: String
 
     #if DEBUG
-    static let example = Order(id: UUID(), date: "12.09.2020", productCount: 5, deliveryType: "Standard")
+    static let example = Order(id: "123")
+    //static let example = Order(id: "123", attributes: Attributes(orderNumber: "100", orderDateTime: "12.09.2020"))
+    //static let example = Order(id: "123", attributes: Attributes(orderNumber: 100, orderDateTime: "12.09.2020"), productCount: 5, deliveryType: "Standard")
     #endif
 }

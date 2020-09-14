@@ -14,6 +14,8 @@ struct NetworkService {
     static let loginURL = "https://next.pickware.de/api/oauth/token"
     static let getOrderURL = "https://next.pickware.de/api/v3/search/order"
     
+    static var token:String = ""
+    
     static func login() {
         
         DispatchQueue.global(qos: .userInteractive).async {
@@ -24,48 +26,59 @@ struct NetworkService {
                        encoder: JSONParameterEncoder.default).responseDecodable(of:LoginResponse.self) { response in
                         
                     if let value = response.value {
+                        token = value.access_token
+                        getOrders()
+                    }
+            }
+        }
+    }
+    
+    static func getOrders() {
+        
+        let headers: HTTPHeaders = [
+            "Authorization": "Bearer \(token)",
+            "Accept": "application/json"
+        ]
+        
+        let parameters: Parameters = [
+            "associations":
+                [
+                    "lineItems" : [],
+                    "deliveries": [],
+                    "stateMachineState": []
+            ],
+            "includes":
+                [
+                    "order" : ["id", "orderNumber", "orderDateTime", "lineItems", "shippingTotal", "deliveries", "stateMachineState"],
+                    "order_line_item" : ["id", "label", "productId", "quantity"],
+                    "order_delivery" : ["shippingMethod"],
+                    "state_machine_state" : ["technicalName"]
+            ],
+            "filter":[
+                [
+                    "type" : "equals",
+                    "field": "stateMachineState.technicalName",
+                    "value": "open"
+                ]
+            ],
+        ]
+        
+        DispatchQueue.global(qos: .userInteractive).async {
+            
+            //.responseDecodable(of:Orders.self)
+            
+            AF.request(getOrderURL,
+                       method: .post,
+                       parameters: parameters,
+                       encoding: JSONEncoding.default,
+                       headers: headers).responseDecodable(of:Orders.self) { response in
+                        
+                    if let value = response.value {
                         print(response)
+                    } else {
+                        print(response.error)
                     }
             }
         }
     }
-    
-    /*
-    static func getRequest(tag:Int, completion: @escaping ([Petition]) -> Void) {
-        
-        let urlString: String
-
-        if tag == 0 {
-            // urlString = "https://api.whitehouse.gov/v1/petitions.json?limit=100"
-            urlString = "https://www.hackingwithswift.com/samples/petitions-1.json"
-        } else {
-            // urlString = "https://api.whitehouse.gov/v1/petitions.json?signatureCountFloor=10000&limit=100"
-            urlString = "https://www.hackingwithswift.com/samples/petitions-2.json"
-        }
-        
-        // see for different async priorities https://www.hackingwithswift.com/read/9/3/gcd-101-async
-        
-        DispatchQueue.global(qos: .userInitiated).async {
-            if let url = URL(string: urlString) {
-                if let data = try? Data(contentsOf: url) {
-                    let petitions = NetworkService.parse(json: data)
-                    
-                    DispatchQueue.main.async {
-                        completion(petitions)
-                    }
-                }
-            }
-        }
-    }
-    
-    static private func parse(json: Data) -> [Petition] {
-        let decoder = JSONDecoder()
-
-        if let jsonPetitions = try? decoder.decode(Petitions.self, from: json) {
-            return jsonPetitions.results
-        } else {
-            return [Petition]()
-        }
-    }
- */
 }

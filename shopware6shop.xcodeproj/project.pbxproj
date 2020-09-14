@@ -19,6 +19,7 @@
 		1FF932F0250FA287002EF14E /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FF932EF250FA287002EF14E /* NetworkService.swift */; };
 		1FF932F2250FA3CD002EF14E /* LoginResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FF932F1250FA3CD002EF14E /* LoginResponse.swift */; };
 		1FF932F4250FA456002EF14E /* LoginRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FF932F3250FA456002EF14E /* LoginRequest.swift */; };
+		1FF932F6250FABFD002EF14E /* Attributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FF932F5250FABFD002EF14E /* Attributes.swift */; };
 		970DDFAC759C8F0481707096 /* Pods_shopware6shop.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 72D9F7579FAE5E3F86D0AA56 /* Pods_shopware6shop.framework */; };
 /* End PBXBuildFile section */
 
@@ -37,6 +38,7 @@
 		1FF932EF250FA287002EF14E /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		1FF932F1250FA3CD002EF14E /* LoginResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginResponse.swift; sourceTree = "<group>"; };
 		1FF932F3250FA456002EF14E /* LoginRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRequest.swift; sourceTree = "<group>"; };
+		1FF932F5250FABFD002EF14E /* Attributes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Attributes.swift; sourceTree = "<group>"; };
 		72D9F7579FAE5E3F86D0AA56 /* Pods_shopware6shop.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_shopware6shop.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B3C8651AFEA3F28DDB789D46 /* Pods-shopware6shop.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-shopware6shop.debug.xcconfig"; path = "Target Support Files/Pods-shopware6shop/Pods-shopware6shop.debug.xcconfig"; sourceTree = "<group>"; };
 		CAC5404748CC4A257D34AB53 /* Pods-shopware6shop.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-shopware6shop.release.xcconfig"; path = "Target Support Files/Pods-shopware6shop/Pods-shopware6shop.release.xcconfig"; sourceTree = "<group>"; };
@@ -110,6 +112,7 @@
 			children = (
 				1FF932E8250F9B39002EF14E /* Order.swift */,
 				1FF932EC250FA1A8002EF14E /* Orders.swift */,
+				1FF932F5250FABFD002EF14E /* Attributes.swift */,
 			);
 			path = data;
 			sourceTree = "<group>";
@@ -264,6 +267,7 @@
 				1FF932E6250F9A29002EF14E /* OrderRowView.swift in Sources */,
 				1FF932D3250F983D002EF14E /* SceneDelegate.swift in Sources */,
 				1FF932D5250F983D002EF14E /* OrderListView.swift in Sources */,
+				1FF932F6250FABFD002EF14E /* Attributes.swift in Sources */,
 				1FF932F2250FA3CD002EF14E /* LoginResponse.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

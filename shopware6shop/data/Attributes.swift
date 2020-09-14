@@ -1,5 +1,5 @@
 //
-//  Orders.swift
+//  Attributes.swift
 //  shopware6shop
 //
 //  Created by Marcel Romagnuolo on 14.09.20.
@@ -8,6 +8,8 @@
 
 import Foundation
 
-class Orders:ObservableObject, Decodable {
-    var data = [Order]()
+struct Attributes: Codable {
+    
+    var orderNumber: String
+    var orderDateTime: String
 }

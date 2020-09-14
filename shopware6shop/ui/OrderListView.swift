@@ -19,7 +19,7 @@ struct OrderListView: View {
         
         NavigationView {
             List {
-                ForEach(self.orders.items) { item in
+                ForEach(self.orders.data) { item in
                     OrderRowView(item: item)
                 }
             }
