@@ -3,16 +3,17 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		1FF932D1250F983D002EF14E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FF932D0250F983D002EF14E /* AppDelegate.swift */; };
 		1FF932D3250F983D002EF14E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FF932D2250F983D002EF14E /* SceneDelegate.swift */; };
-		1FF932D5250F983D002EF14E /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FF932D4250F983D002EF14E /* ContentView.swift */; };
+		1FF932D5250F983D002EF14E /* OrderListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FF932D4250F983D002EF14E /* OrderListView.swift */; };
 		1FF932D7250F983F002EF14E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1FF932D6250F983F002EF14E /* Assets.xcassets */; };
 		1FF932DA250F983F002EF14E /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1FF932D9250F983F002EF14E /* Preview Assets.xcassets */; };
 		1FF932DD250F983F002EF14E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1FF932DB250F983F002EF14E /* LaunchScreen.storyboard */; };
+		1FF932E6250F9A29002EF14E /* OrderRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FF932E5250F9A29002EF14E /* OrderRowView.swift */; };
 		970DDFAC759C8F0481707096 /* Pods_shopware6shop.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 72D9F7579FAE5E3F86D0AA56 /* Pods_shopware6shop.framework */; };
 /* End PBXBuildFile section */
 
@@ -20,11 +21,12 @@
 		1FF932CD250F983D002EF14E /* shopware6shop.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = shopware6shop.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1FF932D0250F983D002EF14E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1FF932D2250F983D002EF14E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		1FF932D4250F983D002EF14E /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		1FF932D4250F983D002EF14E /* OrderListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderListView.swift; sourceTree = "<group>"; };
 		1FF932D6250F983F002EF14E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1FF932D9250F983F002EF14E /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		1FF932DC250F983F002EF14E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1FF932DE250F983F002EF14E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1FF932E5250F9A29002EF14E /* OrderRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderRowView.swift; sourceTree = "<group>"; };
 		72D9F7579FAE5E3F86D0AA56 /* Pods_shopware6shop.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_shopware6shop.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B3C8651AFEA3F28DDB789D46 /* Pods-shopware6shop.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-shopware6shop.debug.xcconfig"; path = "Target Support Files/Pods-shopware6shop/Pods-shopware6shop.debug.xcconfig"; sourceTree = "<group>"; };
 		CAC5404748CC4A257D34AB53 /* Pods-shopware6shop.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-shopware6shop.release.xcconfig"; path = "Target Support Files/Pods-shopware6shop/Pods-shopware6shop.release.xcconfig"; sourceTree = "<group>"; };
@@ -63,9 +65,9 @@
 		1FF932CF250F983D002EF14E /* shopware6shop */ = {
 			isa = PBXGroup;
 			children = (
+				1FF932E4250F99FF002EF14E /* UI */,
 				1FF932D0250F983D002EF14E /* AppDelegate.swift */,
 				1FF932D2250F983D002EF14E /* SceneDelegate.swift */,
-				1FF932D4250F983D002EF14E /* ContentView.swift */,
 				1FF932D6250F983F002EF14E /* Assets.xcassets */,
 				1FF932DB250F983F002EF14E /* LaunchScreen.storyboard */,
 				1FF932DE250F983F002EF14E /* Info.plist */,
@@ -82,13 +84,21 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
+		1FF932E4250F99FF002EF14E /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				1FF932D4250F983D002EF14E /* OrderListView.swift */,
+				1FF932E5250F9A29002EF14E /* OrderRowView.swift */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
 		E1921D0950C7423D8DCA54EB /* Pods */ = {
 			isa = PBXGroup;
 			children = (
 				B3C8651AFEA3F28DDB789D46 /* Pods-shopware6shop.debug.xcconfig */,
 				CAC5404748CC4A257D34AB53 /* Pods-shopware6shop.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -216,8 +226,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				1FF932D1250F983D002EF14E /* AppDelegate.swift in Sources */,
+				1FF932E6250F9A29002EF14E /* OrderRowView.swift in Sources */,
 				1FF932D3250F983D002EF14E /* SceneDelegate.swift in Sources */,
-				1FF932D5250F983D002EF14E /* ContentView.swift in Sources */,
+				1FF932D5250F983D002EF14E /* OrderListView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
