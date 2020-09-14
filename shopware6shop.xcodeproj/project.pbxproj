@@ -13,6 +13,7 @@
 		1FF932D7250F983F002EF14E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1FF932D6250F983F002EF14E /* Assets.xcassets */; };
 		1FF932DA250F983F002EF14E /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1FF932D9250F983F002EF14E /* Preview Assets.xcassets */; };
 		1FF932DD250F983F002EF14E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1FF932DB250F983F002EF14E /* LaunchScreen.storyboard */; };
+		970DDFAC759C8F0481707096 /* Pods_shopware6shop.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 72D9F7579FAE5E3F86D0AA56 /* Pods_shopware6shop.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,9 @@
 		1FF932D9250F983F002EF14E /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		1FF932DC250F983F002EF14E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1FF932DE250F983F002EF14E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		72D9F7579FAE5E3F86D0AA56 /* Pods_shopware6shop.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_shopware6shop.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B3C8651AFEA3F28DDB789D46 /* Pods-shopware6shop.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-shopware6shop.debug.xcconfig"; path = "Target Support Files/Pods-shopware6shop/Pods-shopware6shop.debug.xcconfig"; sourceTree = "<group>"; };
+		CAC5404748CC4A257D34AB53 /* Pods-shopware6shop.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-shopware6shop.release.xcconfig"; path = "Target Support Files/Pods-shopware6shop/Pods-shopware6shop.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,6 +35,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				970DDFAC759C8F0481707096 /* Pods_shopware6shop.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -42,6 +47,8 @@
 			children = (
 				1FF932CF250F983D002EF14E /* shopware6shop */,
 				1FF932CE250F983D002EF14E /* Products */,
+				E1921D0950C7423D8DCA54EB /* Pods */,
+				F16A856391F7FF767F7DEAEC /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -75,6 +82,24 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
+		E1921D0950C7423D8DCA54EB /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				B3C8651AFEA3F28DDB789D46 /* Pods-shopware6shop.debug.xcconfig */,
+				CAC5404748CC4A257D34AB53 /* Pods-shopware6shop.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		F16A856391F7FF767F7DEAEC /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				72D9F7579FAE5E3F86D0AA56 /* Pods_shopware6shop.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -82,9 +107,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 1FF932E1250F983F002EF14E /* Build configuration list for PBXNativeTarget "shopware6shop" */;
 			buildPhases = (
+				E97C788423DC533E9403CC7D /* [CP] Check Pods Manifest.lock */,
 				1FF932C9250F983D002EF14E /* Sources */,
 				1FF932CA250F983D002EF14E /* Frameworks */,
 				1FF932CB250F983D002EF14E /* Resources */,
+				A11F0DC0A89C9E595196C918 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -140,6 +167,48 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		A11F0DC0A89C9E595196C918 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-shopware6shop/Pods-shopware6shop-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-shopware6shop/Pods-shopware6shop-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-shopware6shop/Pods-shopware6shop-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E97C788423DC533E9403CC7D /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-shopware6shop-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		1FF932C9250F983D002EF14E /* Sources */ = {
@@ -282,6 +351,7 @@
 		};
 		1FF932E2250F983F002EF14E /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B3C8651AFEA3F28DDB789D46 /* Pods-shopware6shop.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -301,6 +371,7 @@
 		};
 		1FF932E3250F983F002EF14E /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = CAC5404748CC4A257D34AB53 /* Pods-shopware6shop.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
