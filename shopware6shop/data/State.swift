@@ -1,5 +1,5 @@
 //
-//  Orders.swift
+//  State.swift
 //  shopware6shop
 //
 //  Created by Marcel Romagnuolo on 14.09.20.
@@ -8,8 +8,8 @@
 
 import Foundation
 
-//todo: geht auch struct?
-class Orders:ObservableObject, Decodable {
+struct State:Decodable, Identifiable {
     
-    var data = [Order]()
+    var id: String
+    var technicalName:String
 }

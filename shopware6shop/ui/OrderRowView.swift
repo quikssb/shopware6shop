@@ -35,8 +35,10 @@ struct OrderRowView: View {
     }
 }
 
+/*
 struct OrderRowView_Previews: PreviewProvider {
     static var previews: some View {
         OrderRowView(item: Order.example)
     }
 }
+ */

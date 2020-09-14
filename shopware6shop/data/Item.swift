@@ -1,5 +1,5 @@
 //
-//  Attributes.swift
+//  Item.swift
 //  shopware6shop
 //
 //  Created by Marcel Romagnuolo on 14.09.20.
@@ -8,8 +8,10 @@
 
 import Foundation
 
-struct Attribute: Codable {
+struct Item:Decodable, Identifiable {
     
-    var orderNumber: String
-    var orderDateTime: String
+    var id: String
+    var productId: String
+    var quantity: Int
+    var label: String
 }

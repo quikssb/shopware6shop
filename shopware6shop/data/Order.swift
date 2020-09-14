@@ -9,14 +9,26 @@
 import Foundation
 
 struct Order: Codable, Identifiable {
+    
+    //todo: geht auch uuid?
     var id: String
-   // var attributes: Attributes
-    //var productCount: Int
-    //var deliveryType: String
+    var orderNumber: String
+    var orderDateTime: String
+    var lineItems: [Item]
+    var stateMachineState: State
+    
+    var lineItemsCount: Int {
+        return lineItems.count
+    }
+    
+    var stateName: String {
+        return technicalName.technicalName
+    }
+    //
 
     #if DEBUG
-    static let example = Order(id: "123")
-    //static let example = Order(id: "123", attributes: Attributes(orderNumber: "100", orderDateTime: "12.09.2020"))
+    //static let example = Order(id: "123")
+    //static let example = Order(id: "123", attributes: Attribute(orderNumber: "100", orderDateTime: "12.09.2020"))
     //static let example = Order(id: "123", attributes: Attributes(orderNumber: 100, orderDateTime: "12.09.2020"), productCount: 5, deliveryType: "Standard")
     #endif
 }

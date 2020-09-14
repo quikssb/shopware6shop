@@ -19,7 +19,8 @@
 		1FF932F0250FA287002EF14E /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FF932EF250FA287002EF14E /* NetworkService.swift */; };
 		1FF932F2250FA3CD002EF14E /* LoginResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FF932F1250FA3CD002EF14E /* LoginResponse.swift */; };
 		1FF932F4250FA456002EF14E /* LoginRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FF932F3250FA456002EF14E /* LoginRequest.swift */; };
-		1FF932F6250FABFD002EF14E /* Attribute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FF932F5250FABFD002EF14E /* Attribute.swift */; };
+		1FF932F8250FF544002EF14E /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FF932F7250FF544002EF14E /* Item.swift */; };
+		1FF932FA250FF6C5002EF14E /* State.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FF932F9250FF6C5002EF14E /* State.swift */; };
 		970DDFAC759C8F0481707096 /* Pods_shopware6shop.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 72D9F7579FAE5E3F86D0AA56 /* Pods_shopware6shop.framework */; };
 /* End PBXBuildFile section */
 
@@ -38,7 +39,8 @@
 		1FF932EF250FA287002EF14E /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		1FF932F1250FA3CD002EF14E /* LoginResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginResponse.swift; sourceTree = "<group>"; };
 		1FF932F3250FA456002EF14E /* LoginRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRequest.swift; sourceTree = "<group>"; };
-		1FF932F5250FABFD002EF14E /* Attribute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Attribute.swift; sourceTree = "<group>"; };
+		1FF932F7250FF544002EF14E /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
+		1FF932F9250FF6C5002EF14E /* State.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = State.swift; sourceTree = "<group>"; };
 		72D9F7579FAE5E3F86D0AA56 /* Pods_shopware6shop.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_shopware6shop.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B3C8651AFEA3F28DDB789D46 /* Pods-shopware6shop.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-shopware6shop.debug.xcconfig"; path = "Target Support Files/Pods-shopware6shop/Pods-shopware6shop.debug.xcconfig"; sourceTree = "<group>"; };
 		CAC5404748CC4A257D34AB53 /* Pods-shopware6shop.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-shopware6shop.release.xcconfig"; path = "Target Support Files/Pods-shopware6shop/Pods-shopware6shop.release.xcconfig"; sourceTree = "<group>"; };
@@ -112,7 +114,8 @@
 			children = (
 				1FF932E8250F9B39002EF14E /* Order.swift */,
 				1FF932EC250FA1A8002EF14E /* Orders.swift */,
-				1FF932F5250FABFD002EF14E /* Attribute.swift */,
+				1FF932F7250FF544002EF14E /* Item.swift */,
+				1FF932F9250FF6C5002EF14E /* State.swift */,
 			);
 			path = data;
 			sourceTree = "<group>";
@@ -259,15 +262,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1FF932F8250FF544002EF14E /* Item.swift in Sources */,
 				1FF932F4250FA456002EF14E /* LoginRequest.swift in Sources */,
 				1FF932ED250FA1A8002EF14E /* Orders.swift in Sources */,
+				1FF932FA250FF6C5002EF14E /* State.swift in Sources */,
 				1FF932D1250F983D002EF14E /* AppDelegate.swift in Sources */,
 				1FF932E9250F9B39002EF14E /* Order.swift in Sources */,
 				1FF932F0250FA287002EF14E /* NetworkService.swift in Sources */,
 				1FF932E6250F9A29002EF14E /* OrderRowView.swift in Sources */,
 				1FF932D3250F983D002EF14E /* SceneDelegate.swift in Sources */,
 				1FF932D5250F983D002EF14E /* OrderListView.swift in Sources */,
-				1FF932F6250FABFD002EF14E /* Attribute.swift in Sources */,
 				1FF932F2250FA3CD002EF14E /* LoginResponse.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -17,20 +17,18 @@ struct NetworkService {
     static var token:String = ""
     
     static func login() {
-        
-        DispatchQueue.global(qos: .userInteractive).async {
             
-            AF.request(loginURL,
+        AF.request(loginURL,
                        method: .post,
                        parameters: LoginRequest.testuser,
                        encoder: JSONParameterEncoder.default).responseDecodable(of:LoginResponse.self) { response in
                         
-                    if let value = response.value {
-                        token = value.access_token
-                        getOrders()
-                    }
+                if let value = response.value {
+                    token = value.access_token
+                    getOrders()
+                }
             }
-        }
+        
     }
     
     static func getOrders() {
@@ -40,38 +38,39 @@ struct NetworkService {
             "Accept": "application/json"
         ]
         
-        let parameters: Parameters = [
-            "associations":
+        //todo: put names depending on classes
+        let parameters: Parameters =
+        [
+                "associations":
                 [
-                    "lineItems" : [],
-                    "deliveries": [],
-                    "stateMachineState": []
-            ],
-            "includes":
+                    "lineItems" : [:],
+                    "deliveries": [:],
+                    "stateMachineState": [:]
+                ],
+                "includes":
                 [
-                    "order" : ["id", "orderNumber", "orderDateTime", "lineItems", "shippingTotal", "deliveries", "stateMachineState"],
-                    "order_line_item" : ["id", "label", "productId", "quantity"],
-                    "order_delivery" : ["shippingMethod"],
-                    "state_machine_state" : ["technicalName"]
-            ],
-            "filter":[
-                [
-                    "type" : "equals",
-                    "field": "stateMachineState.technicalName",
-                    "value": "open"
-                ]
-            ],
+                        "order" : ["id", "orderNumber", "orderDateTime", "lineItems", "shippingTotal", "deliveries", "stateMachineState"],
+                        "order_line_item" : ["id", "label", "productId", "quantity"],
+                        "order_delivery" : ["id", "shippingMethod"],
+                        "state_machine_state" : ["id", "technicalName"]
+                ],
+                "filter":[
+                    [
+                        "type" : "equals",
+                        "field": "stateMachineState.technicalName",
+                        "value": "open"
+                    ]
+                ],
         ]
-        
-        DispatchQueue.global(qos: .userInteractive).async {
-            
             //.responseDecodable(of:Orders.self)
             
             AF.request(getOrderURL,
                        method: .post,
                        parameters: parameters,
                        encoding: JSONEncoding.default,
-                       headers: headers).responseDecodable(of:Orders.self) { response in
+                       headers: headers)
+                       .responseDecodable(of:Orders.self) { response in
+                       //.responseJSON() { response in
                         
                     if let value = response.value {
                         print(response)
@@ -79,6 +78,6 @@ struct NetworkService {
                         print(response.error)
                     }
             }
-        }
+        
     }
 }
