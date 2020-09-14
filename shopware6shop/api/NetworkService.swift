@@ -13,13 +13,9 @@ struct NetworkService {
     
     static private var token:String = String()
     
-    static private let loginURL = "https://next.pickware.de/api/oauth/token"
-    static private let getOrderURL = "https://next.pickware.de/api/v3/search/order"
-    
-    
     static func login(completion: @escaping ([Order]) -> Void) {
         
-        AF.request(loginURL,
+        AF.request(NetworkConstants.loginURL,
                    method: .post,
                    parameters: LoginRequest.testuser,
                    encoder: JSONParameterEncoder.default).responseDecodable(of:LoginResponse.self) { response in
@@ -40,45 +36,11 @@ struct NetworkService {
             "Accept": "application/json",
         ]
         
-        //todo: put names depending on classes
-        let parameters: Parameters =
-        [
-            "associations":
-            [
-                "lineItems" : [:],
-                "deliveries":
-                [
-                    "associations":
-                    [
-                        "shippingMethod" : [:]
-                    ]
-                ],
-                "stateMachineState": [:]
-            ],
-            "includes":
-            [
-                "order" : ["id", "orderNumber", "orderDateTime", "lineItems", "shippingTotal", "deliveries", "stateMachineState"],
-                "order_line_item" : ["id", "label", "productId", "quantity"],
-                "order_delivery" : ["id", "shippingMethod"],
-                "state_machine_state" : ["id", "technicalName"],
-                "shipping_method" : ["id", "name"]
-            ],
-            "filter":
-            [
-                [
-                    "type" : "equals",
-                    "field": "stateMachineState.technicalName",
-                    "value": "open"
-                ]
-            ],
-        ]
-        //.responseDecodable(of:Orders.self)
-        
-        AF.request(getOrderURL,
+        AF.request(NetworkConstants.orderURL,
                    method: .post,
-                   parameters: parameters,
+                   parameters: NetworkConstants.orderQuery,
                    encoding: JSONEncoding.default,
-                   headers: headers)
+                   headers: NetworkConstants.headers(token))
                 .responseDecodable(of:Orders.self) { response in
                 //.responseJSON() { response in
                 
