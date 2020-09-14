@@ -1,5 +1,5 @@
 //
-//  State.swift
+//  ShippingMethod.swift
 //  shopware6shop
 //
 //  Created by Marcel Romagnuolo on 14.09.20.
@@ -8,8 +8,8 @@
 
 import Foundation
 
-struct Delivery:Codable, Identifiable {
+struct ShippingMethod:Codable, Identifiable {
     
     var id: String
-    var shippingMethod:ShippingMethod
+    var name:String
 }

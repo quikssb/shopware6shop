@@ -44,7 +44,13 @@ struct NetworkService {
                 "associations":
                 [
                     "lineItems" : [:],
-                    "deliveries": [:],
+                    "deliveries":
+                        [
+                            "associations":
+                                [
+                                    "shippingMethod" : [:]
+                                ]
+                        ],
                     "stateMachineState": [:]
                 ],
                 "includes":
@@ -52,7 +58,8 @@ struct NetworkService {
                         "order" : ["id", "orderNumber", "orderDateTime", "lineItems", "shippingTotal", "deliveries", "stateMachineState"],
                         "order_line_item" : ["id", "label", "productId", "quantity"],
                         "order_delivery" : ["id", "shippingMethod"],
-                        "state_machine_state" : ["id", "technicalName"]
+                        "state_machine_state" : ["id", "technicalName"],
+                        "shipping_method" : ["id", "name"]
                 ],
                 "filter":[
                     [
