@@ -30,8 +30,10 @@ struct OrderListView: View {
     
     private func loadOrders() {
         
-        NetworkService.login(completion: {orders in
+        NetworkService.getOrders(completion: {orders in
             
+            //todo: create little data class and return this
+            //if error show toast
             self.orders.orders = orders
         })
     }

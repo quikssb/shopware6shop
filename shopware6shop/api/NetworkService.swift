@@ -10,82 +10,99 @@ import Alamofire
 import Foundation
 
 struct NetworkService {
-
-    static let loginURL = "https://next.pickware.de/api/oauth/token"
-    static let getOrderURL = "https://next.pickware.de/api/v3/search/order"
     
-    static var token:String = ""
+    static private var token:String = String()
+    
+    static private let loginURL = "https://next.pickware.de/api/oauth/token"
+    static private let getOrderURL = "https://next.pickware.de/api/v3/search/order"
+    
     
     static func login(completion: @escaping ([Order]) -> Void) {
-            
+        
         AF.request(loginURL,
-                       method: .post,
-                       parameters: LoginRequest.testuser,
-                       encoder: JSONParameterEncoder.default).responseDecodable(of:LoginResponse.self) { response in
-                        
-                if let value = response.value {
-                    token = value.access_token
-                    getOrders(completion: completion)
-                }
-            }
+                   method: .post,
+                   parameters: LoginRequest.testuser,
+                   encoder: JSONParameterEncoder.default).responseDecodable(of:LoginResponse.self) { response in
+                    
+                    if let value = response.value {
+                        token = value.access_token
+                        getOrders(completion: completion)
+                    }
+        }
         
     }
     
     static func getOrders(completion: @escaping ([Order]) -> Void) {
         
-        let headers: HTTPHeaders = [
+        let headers: HTTPHeaders =
+        [
             "Authorization": "Bearer \(token)",
-            "Accept": "application/json"
+            "Accept": "application/json",
         ]
         
         //todo: put names depending on classes
         let parameters: Parameters =
         [
-                "associations":
+            "associations":
+            [
+                "lineItems" : [:],
+                "deliveries":
                 [
-                    "lineItems" : [:],
-                    "deliveries":
-                        [
-                            "associations":
-                                [
-                                    "shippingMethod" : [:]
-                                ]
-                        ],
-                    "stateMachineState": [:]
-                ],
-                "includes":
-                [
-                        "order" : ["id", "orderNumber", "orderDateTime", "lineItems", "shippingTotal", "deliveries", "stateMachineState"],
-                        "order_line_item" : ["id", "label", "productId", "quantity"],
-                        "order_delivery" : ["id", "shippingMethod"],
-                        "state_machine_state" : ["id", "technicalName"],
-                        "shipping_method" : ["id", "name"]
-                ],
-                "filter":[
+                    "associations":
                     [
-                        "type" : "equals",
-                        "field": "stateMachineState.technicalName",
-                        "value": "open"
+                        "shippingMethod" : [:]
                     ]
                 ],
+                "stateMachineState": [:]
+            ],
+            "includes":
+            [
+                "order" : ["id", "orderNumber", "orderDateTime", "lineItems", "shippingTotal", "deliveries", "stateMachineState"],
+                "order_line_item" : ["id", "label", "productId", "quantity"],
+                "order_delivery" : ["id", "shippingMethod"],
+                "state_machine_state" : ["id", "technicalName"],
+                "shipping_method" : ["id", "name"]
+            ],
+            "filter":
+            [
+                [
+                    "type" : "equals",
+                    "field": "stateMachineState.technicalName",
+                    "value": "open"
+                ]
+            ],
         ]
-            //.responseDecodable(of:Orders.self)
-            
-            AF.request(getOrderURL,
-                       method: .post,
-                       parameters: parameters,
-                       encoding: JSONEncoding.default,
-                       headers: headers)
-                       .responseDecodable(of:Orders.self) { response in
-                       //.responseJSON() { response in
-                        
-                    if let value = response.value {
-                        print(response)
-                        completion(value.data)
-                    } else {
-                        print(response.error)
-                    }
-            }
+        //.responseDecodable(of:Orders.self)
         
+        AF.request(getOrderURL,
+                   method: .post,
+                   parameters: parameters,
+                   encoding: JSONEncoding.default,
+                   headers: headers)
+                .responseDecodable(of:Orders.self) { response in
+                //.responseJSON() { response in
+                
+                //if let value = response.value {
+                if let statusCode = response.response?.statusCode {
+                    
+                    print(response)
+                    print(statusCode)
+                    
+                    if(statusCode == 200) {
+                        
+                        if let value = response.value {
+                            completion(value.data)
+                        }
+                        
+                    } else if (statusCode == 401) {
+                        
+                        login(completion: completion)
+                    }
+                }
+                else {
+                    print(response.error)
+                    completion([Order]())
+                }
+        }
     }
 }
