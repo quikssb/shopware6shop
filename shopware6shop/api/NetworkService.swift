@@ -34,7 +34,7 @@ struct NetworkService {
         
         AF.request(NetworkConstants.orderURL,
                    method: .post,
-                   parameters: NetworkConstants.orderQuery,
+                   parameters: NetworkConstants.getOrderQuery,
                    encoding: JSONEncoding.default,
                    headers: NetworkConstants.headers(token))
                 .responseDecodable(of:Orders.self) { response in
