@@ -61,8 +61,8 @@ struct NetworkService {
                 }
         }
     }
-    
-    static func shipOrder(orderDeliveryId: String, warehouseId: String) {
+
+    static func shipOrder(orderDeliveryId: String, warehouseId: String, completion: @escaping (Bool, String) -> Void) {
         
         AF.request(NetworkConstants.shipOrderURL,
                    method: .post,
@@ -78,27 +78,23 @@ struct NetworkService {
                     
                     if(statusCode == 200) {
                         
-                        if let value = response.value {
-                            print(response.value)
-                            //completion(OrderResponse(orders: value, error: nil, statusCode: response.response?.statusCode))
-                        }
+                        completion(true, String())
+                        
                     } else if (statusCode == 401) {
-                        print(response.value)
+                        //print(response.value)
+                        completion(false, response.error?.errorDescription ?? "an error occured")
+                        //TODO: change login behaviour with login screen
                         //login(completion: completion)
                     } else {
                         
-                        if let value = response.value {
-                            print(response.value)
-                            //completion(OrderResponse(orders: value, error: nil, statusCode: response.response?.statusCode))
-                        }
-                        print(response.error)
+                        completion(false, response.error?.errorDescription ?? "an error occured")
                     }
                 }
                 else {
-                    print(response.value)
-                    print(response.error)
+                    //print(response.value)
+                    //print(response.error)
 
-                    //completion(OrderResponse(orders: nil, error: response.error, statusCode: response.response?.statusCode))
+                    completion(false, response.error?.errorDescription ?? "an error occured")
                 }
         }
     }

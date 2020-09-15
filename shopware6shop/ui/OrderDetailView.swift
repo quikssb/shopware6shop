@@ -12,6 +12,9 @@ struct OrderDetailView: View {
     
     var order:Order
     
+    @State private var buttonDisabled = false
+    @State private var buttonText = "Send order"
+    
     var body: some View {
         
             VStack(alignment: .leading) {
@@ -38,21 +41,37 @@ struct OrderDetailView: View {
                 
                 HStack(alignment: .center) {
                     Button(action: {
-                        NetworkService.shipOrder(orderDeliveryId: self.order.deliveries.first!.id, warehouseId: self.order.lineItems.first!.product.getMainWarehouseId())
+                        self.shipOrder()
                     }) {
                         Spacer()
-                        Text("Send order")
+                        Text(buttonText)
                         .padding()
                         .background(Color.blue)
                         .foregroundColor(.white)
                         .font(.title)
                         Spacer()
-                    }
+                    }.disabled(buttonDisabled)
                 }
 
                 
             }.navigationBarTitle("Order number \(order.orderNumber)")
         }
+    
+    private func shipOrder() {
+        
+        NetworkService.shipOrder(
+            orderDeliveryId: self.order.deliveries.first!.id,
+            warehouseId: self.order.lineItems.first!.product.getMainWarehouseId(),
+            completion:  {success, error in
+                
+                if(success) {
+                    self.buttonDisabled = true
+                    self.buttonText = "Shipped"
+                } else {
+                    self.buttonText = "Error"
+                }
+        })
+    }
 }
 
 /*
