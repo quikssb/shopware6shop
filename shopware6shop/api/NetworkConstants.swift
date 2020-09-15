@@ -105,5 +105,12 @@ struct NetworkConstants {
                 "value": "open"
             ]
         ],
+        "sort":
+        [
+            [
+                "order" : "ASC",
+                "field": "orderNumber"
+            ]
+        ],
     ]
 }
