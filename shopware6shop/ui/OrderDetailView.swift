@@ -38,7 +38,8 @@ struct OrderDetailView: View {
                             //VStack places Views vertically
                             VStack(alignment: .leading) {
                                 Text(String("Quantity: \(item.quantity)"))
-                                Text("lagerplatz")
+                                Text("\(item.product.extensions.pickwareErpStocks[0].warehouseName)")
+                                Text("\(item.product.extensions.pickwareErpStocks[0].quantity)")
                             }
                         }
                         
