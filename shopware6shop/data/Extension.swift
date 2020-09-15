@@ -9,5 +9,6 @@
 import Foundation
 
 struct Extension:Codable {
+    
     var pickwareErpStocks: [Stock]
 }

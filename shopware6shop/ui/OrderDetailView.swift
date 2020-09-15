@@ -73,11 +73,3 @@ struct OrderDetailView: View {
         })
     }
 }
-
-/*
-struct OrderDetailView_Previews: PreviewProvider {
-    static var previews: some View {
-        OrderDetailView()
-    }
-}
- */

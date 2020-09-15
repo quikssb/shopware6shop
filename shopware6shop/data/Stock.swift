@@ -22,29 +22,6 @@ struct Stock: Codable, Identifiable {
     var binLocation:BinLocation?
     var specialStockLocationTechnicalName:String?
     
-    var warehouseName:String {
-        
-        switch locationTypeTechnicalName {
-            
-        case LocationTypeKey.warehouse.rawValue:
-            if let warehouse = warehouse {
-                return warehouse.name
-            } else {
-                return locationTypeTechnicalName
-            }
-            
-        case LocationTypeKey.binLocation.rawValue:
-            if let warehouse = binLocation?.warehouse {
-                return warehouse.name
-            } else {
-                return locationTypeTechnicalName
-            }
-            
-        default:
-            return locationTypeTechnicalName
-        }
-    }
-    
     var mainWarehouse:Warehouse? {
 
         switch locationTypeTechnicalName {
@@ -68,5 +45,14 @@ struct Stock: Codable, Identifiable {
         }
         
         return nil
+    }
+    
+    var warehouseName:String {
+        
+        if let warehouse = mainWarehouse {
+            return warehouse.name
+        } else {
+            return locationTypeTechnicalName
+        }
     }
 }

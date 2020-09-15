@@ -11,6 +11,8 @@ import Foundation
 struct Product:Codable {
     var extensions:Extension
     
+    //TODO: optimize logic of computing mainWarehouse and its functions
+    
     var mainWarehouseAndQuantityDescription:String {
                 
         var name:String = String()
@@ -46,6 +48,7 @@ struct Product:Codable {
             
             if let mainWarehouseTmp = stock.mainWarehouse{
                 id =  mainWarehouseTmp.id
+                //TODO: understand how break works
             }
         }
         

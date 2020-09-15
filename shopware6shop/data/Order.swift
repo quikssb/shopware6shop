@@ -11,7 +11,7 @@ import SwiftDate
 
 class Order: Codable, Identifiable {
     
-    //TODO: geht auch uuid?
+    //TODO: uuid?
     var id: String
     var orderNumber: String
     var orderDateTime: String
@@ -19,10 +19,12 @@ class Order: Codable, Identifiable {
     var deliveries: [Delivery]
     
     var lineItemsCount: Int {
+        
         return lineItems.count
     }
     
     var shippingMethod: String {
+        
         if let delivery = deliveries.first {
             return delivery.shippingMethod.name
         } else {
@@ -32,7 +34,7 @@ class Order: Codable, Identifiable {
     
     var orderDateTimeFormatted: String {
         
-        //TODO: überprüfe und konvertiere ggf Zeit in deutsche Zeitzone
+        //TODO: convert time into German timezone (if not already happened)
         let dateFormat = "dd.MM.yyyy HH:mm"
 
         if let formattedDate = orderDateTime.toDate() {
@@ -41,11 +43,12 @@ class Order: Codable, Identifiable {
             return ""
         }
     }
-    //
 
+    /*
     #if DEBUG
     //static let example = Order(id: "123")
     //static let example = Order(id: "123", attributes: Attribute(orderNumber: "100", orderDateTime: "12.09.2020"))
     //static let example = Order(id: "123", attributes: Attributes(orderNumber: 100, orderDateTime: "12.09.2020"), productCount: 5, deliveryType: "Standard")
     #endif
+    */
 }
