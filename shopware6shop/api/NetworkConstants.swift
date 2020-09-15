@@ -37,7 +37,7 @@ struct NetworkConstants {
                             "pickwareErpStocks":
                             [
                                 "filter":
-                                [
+                                [[
                                     "type":"multi",
                                     "queries":
                                         [
@@ -53,7 +53,7 @@ struct NetworkConstants {
                                             ],
                                         ],
                                     "operator":"OR"
-                                ],
+                                ]],
                                 "associations":
                                 [
                                     "warehouse" : [:],

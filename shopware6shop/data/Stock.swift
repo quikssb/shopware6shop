@@ -15,9 +15,7 @@ struct Stock: Codable, Identifiable {
         case binLocation = "bin_location"
         case specialStock = "special_stock_location"
     }
-    
-    let locationTypeKeyWarehouse = "warehouse"
-    
+
     var id:String
     var quantity:Int
     var locationTypeTechnicalName:String
