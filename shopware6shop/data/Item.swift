@@ -14,4 +14,5 @@ struct Item:Codable, Identifiable {
     var productId: String
     var quantity: Int
     var label: String
+    var product: Product
 }

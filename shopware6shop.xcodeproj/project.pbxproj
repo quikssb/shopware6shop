@@ -26,6 +26,11 @@
 		1FF9330225102A0B002EF14E /* NetworkConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FF9330125102A0B002EF14E /* NetworkConstants.swift */; };
 		1FF9330425103021002EF14E /* OrderResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FF9330325103021002EF14E /* OrderResponse.swift */; };
 		1FF933082510B34F002EF14E /* OrderDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FF933072510B34F002EF14E /* OrderDetailView.swift */; };
+		1FF9330A2510CEDD002EF14E /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FF933092510CEDD002EF14E /* Product.swift */; };
+		1FF9330C2510CEF7002EF14E /* Stock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FF9330B2510CEF7002EF14E /* Stock.swift */; };
+		1FF9330E2510CF29002EF14E /* Warehouse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FF9330D2510CF29002EF14E /* Warehouse.swift */; };
+		1FF933102510CF42002EF14E /* BinLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FF9330F2510CF42002EF14E /* BinLocation.swift */; };
+		1FF933122510D03C002EF14E /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FF933112510D03C002EF14E /* Extension.swift */; };
 		970DDFAC759C8F0481707096 /* Pods_shopware6shop.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 72D9F7579FAE5E3F86D0AA56 /* Pods_shopware6shop.framework */; };
 /* End PBXBuildFile section */
 
@@ -51,6 +56,11 @@
 		1FF9330125102A0B002EF14E /* NetworkConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkConstants.swift; sourceTree = "<group>"; };
 		1FF9330325103021002EF14E /* OrderResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderResponse.swift; sourceTree = "<group>"; };
 		1FF933072510B34F002EF14E /* OrderDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderDetailView.swift; sourceTree = "<group>"; };
+		1FF933092510CEDD002EF14E /* Product.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
+		1FF9330B2510CEF7002EF14E /* Stock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stock.swift; sourceTree = "<group>"; };
+		1FF9330D2510CF29002EF14E /* Warehouse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Warehouse.swift; sourceTree = "<group>"; };
+		1FF9330F2510CF42002EF14E /* BinLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BinLocation.swift; sourceTree = "<group>"; };
+		1FF933112510D03C002EF14E /* Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
 		72D9F7579FAE5E3F86D0AA56 /* Pods_shopware6shop.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_shopware6shop.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B3C8651AFEA3F28DDB789D46 /* Pods-shopware6shop.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-shopware6shop.debug.xcconfig"; path = "Target Support Files/Pods-shopware6shop/Pods-shopware6shop.debug.xcconfig"; sourceTree = "<group>"; };
 		CAC5404748CC4A257D34AB53 /* Pods-shopware6shop.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-shopware6shop.release.xcconfig"; path = "Target Support Files/Pods-shopware6shop/Pods-shopware6shop.release.xcconfig"; sourceTree = "<group>"; };
@@ -129,6 +139,11 @@
 				1FF932F7250FF544002EF14E /* Item.swift */,
 				1FF932FB250FFE8A002EF14E /* Delivery.swift */,
 				1FF932FD251007B1002EF14E /* ShippingMethod.swift */,
+				1FF933092510CEDD002EF14E /* Product.swift */,
+				1FF9330B2510CEF7002EF14E /* Stock.swift */,
+				1FF9330D2510CF29002EF14E /* Warehouse.swift */,
+				1FF9330F2510CF42002EF14E /* BinLocation.swift */,
+				1FF933112510D03C002EF14E /* Extension.swift */,
 			);
 			path = data;
 			sourceTree = "<group>";
@@ -281,13 +296,18 @@
 				1FF932F8250FF544002EF14E /* Item.swift in Sources */,
 				1FF932F4250FA456002EF14E /* LoginRequest.swift in Sources */,
 				1FF932FE251007B1002EF14E /* ShippingMethod.swift in Sources */,
+				1FF9330C2510CEF7002EF14E /* Stock.swift in Sources */,
 				1FF932ED250FA1A8002EF14E /* Orders.swift in Sources */,
+				1FF9330A2510CEDD002EF14E /* Product.swift in Sources */,
 				1FF932D1250F983D002EF14E /* AppDelegate.swift in Sources */,
 				1FF9330025100FB3002EF14E /* ObservedOrders.swift in Sources */,
+				1FF933122510D03C002EF14E /* Extension.swift in Sources */,
 				1FF932E9250F9B39002EF14E /* Order.swift in Sources */,
+				1FF933102510CF42002EF14E /* BinLocation.swift in Sources */,
 				1FF932FC250FFE8A002EF14E /* Delivery.swift in Sources */,
 				1FF932F0250FA287002EF14E /* NetworkService.swift in Sources */,
 				1FF933082510B34F002EF14E /* OrderDetailView.swift in Sources */,
+				1FF9330E2510CF29002EF14E /* Warehouse.swift in Sources */,
 				1FF9330425103021002EF14E /* OrderResponse.swift in Sources */,
 				1FF932E6250F9A29002EF14E /* OrderRowView.swift in Sources */,
 				1FF932D3250F983D002EF14E /* SceneDelegate.swift in Sources */,

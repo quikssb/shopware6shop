@@ -6,52 +6,6 @@
 //  Copyright © 2020 pickware. All rights reserved.
 //
 
-/*
-{
-    "associations": {
-        "lineItems": {
-            "associations": {
-                "product": {
-                    "associations": {
-                        "pickwareErpStocks" : {
-                            "associations": {
-                                "binLocation" : {
-                                    "associations":{
-                                        "warehouse" : {
-                                        }
-                                    }
-                                },
-                                "warehouse" : {
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        },
-        "deliveries": {
-            "associations": {
-                "shippingMethod": {
-                }
-            }
-        },
-        "stateMachineState": {
-        }
-    },
-    "includes": {
-        "order": ["id", "orderNumber", "orderDateTime", "lineItems", "shippingTotal", "deliveries", "stateMachineState"],
-        "order_line_item": ["id", "label", "productId", "quantity", "product"],
-        "order_delivery": ["id", "shippingMethod"],
-        "state_machine_state": ["id", "technicalName"],
-        "shipping_method": ["id", "name"],
-        "product": ["id", "extensions"]
-    },
-    "filter": [
-        { "type": "equals", "field": "stateMachineState.technicalName", "value": "open" }
-    ]
-}
-*/
-
 import SwiftUI
 
 struct OrderRowView: View {
