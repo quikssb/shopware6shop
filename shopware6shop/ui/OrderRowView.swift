@@ -18,7 +18,7 @@ struct OrderRowView: View {
 
             //VStack places Views vertically
             VStack(alignment: .leading) {
-                Text(item.orderNumber)
+                Text("Order number: \(item.orderNumber)")
                 Text(item.orderDateTimeFormatted)
                 //Text(String("\(item.lineItemsCount)"))
             }
@@ -29,8 +29,8 @@ struct OrderRowView: View {
             //tell the restriction string is the id itself
             //VStack places Views vertically
             VStack(alignment: .leading) {
-                Text(String("\(item.lineItemsCount)"))
-                Text(String("\(item.shippingMethod)"))
+                Text(String("Items: \(item.lineItemsCount)"))
+                Text(String("Shipping: \(item.shippingMethod)"))
             }
         }
     }
