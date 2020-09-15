@@ -13,7 +13,7 @@ struct NetworkConstants {
     
     static let loginURL = "https://next.pickware.de/api/oauth/token"
     static let orderURL = "https://next.pickware.de/api/v3/search/order"
-    static let sendOrderURL = "https://next.pickware.de/api/v2/_action/pickware-erp/ship-order-delivery-completely"
+    static let shipOrderURL = "https://next.pickware.de/api/v2/_action/pickware-erp/ship-order-delivery-completely"
     
     static var headers = { (token: String) -> HTTPHeaders in
         return [
@@ -22,7 +22,7 @@ struct NetworkConstants {
         ]
     }
     
-    static var sendOrderParameters = { (orderDeliveryId: String, warehouseId: String) -> Parameters in
+    static var shipOrderParameters = { (orderDeliveryId: String, warehouseId: String) -> Parameters in
         return [
             "orderDeliveryId": "\(orderDeliveryId)",
             "warehouseId": "\(warehouseId)",

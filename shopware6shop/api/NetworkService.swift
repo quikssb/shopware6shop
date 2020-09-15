@@ -61,4 +61,45 @@ struct NetworkService {
                 }
         }
     }
+    
+    static func shipOrder(orderDeliveryId: String, warehouseId: String) {
+        
+        AF.request(NetworkConstants.shipOrderURL,
+                   method: .post,
+                   parameters: NetworkConstants.shipOrderParameters(orderDeliveryId, warehouseId),
+                   encoding: JSONEncoding.default,
+                   headers: NetworkConstants.headers(token))
+                  .responseJSON() { response in
+                
+                if let statusCode = response.response?.statusCode {
+                    
+                    //print(response)
+                    //print(statusCode)
+                    
+                    if(statusCode == 200) {
+                        
+                        if let value = response.value {
+                            print(response.value)
+                            //completion(OrderResponse(orders: value, error: nil, statusCode: response.response?.statusCode))
+                        }
+                    } else if (statusCode == 401) {
+                        print(response.value)
+                        //login(completion: completion)
+                    } else {
+                        
+                        if let value = response.value {
+                            print(response.value)
+                            //completion(OrderResponse(orders: value, error: nil, statusCode: response.response?.statusCode))
+                        }
+                        print(response.error)
+                    }
+                }
+                else {
+                    print(response.value)
+                    print(response.error)
+
+                    //completion(OrderResponse(orders: nil, error: response.error, statusCode: response.response?.statusCode))
+                }
+        }
+    }
 }

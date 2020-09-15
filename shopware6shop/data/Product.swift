@@ -11,7 +11,7 @@ import Foundation
 struct Product:Codable {
     var extensions:Extension
     
-    var mainWarehouseAndQuantity:String {
+    var mainWarehouseAndQuantityDescription:String {
                 
         var name:String = String()
         
@@ -36,6 +36,20 @@ struct Product:Codable {
         }
         
         return description
+    }
+    
+    func getMainWarehouseId() -> String {
+        
+        var id:String = ""
+        
+        extensions.pickwareErpStocks.forEach() { stock in
+            
+            if let mainWarehouseTmp = stock.mainWarehouse{
+                id =  mainWarehouseTmp.id
+            }
+        }
+        
+        return id
     }
     
     func getStockQuantityMainWarehouse(name: String) -> Int {

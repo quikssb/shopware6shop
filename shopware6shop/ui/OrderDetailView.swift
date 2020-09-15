@@ -31,14 +31,14 @@ struct OrderDetailView: View {
                             Text("Name: \(item.label)")
                             Text("Article Number: \(item.productId)")
                             Text(String("Quantity: \(item.quantity)"))
-                            Text(item.product.mainWarehouseAndQuantity)
+                            Text(item.product.mainWarehouseAndQuantityDescription)
                         }
                     }
                 }.navigationBarTitle("Items")
                 
                 HStack(alignment: .center) {
                     Button(action: {
-                        print("BUtton pressed")
+                        NetworkService.shipOrder(orderDeliveryId: self.order.deliveries.first!.id, warehouseId: self.order.lineItems.first!.product.getMainWarehouseId())
                     }) {
                         Spacer()
                         Text("Send order")
