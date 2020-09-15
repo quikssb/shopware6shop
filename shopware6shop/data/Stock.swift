@@ -13,7 +13,7 @@ struct Stock: Codable, Identifiable {
     enum LocationTypeKey: String {
         case warehouse = "warehouse"
         case binLocation = "bin_location"
-        //TODO: add special stock
+        case specialStock = "special_stock_location"
     }
     
     let locationTypeKeyWarehouse = "warehouse"
@@ -23,6 +23,7 @@ struct Stock: Codable, Identifiable {
     var locationTypeTechnicalName:String
     var warehouse:Warehouse?
     var binLocation:BinLocation?
+    var specialStockLocationTechnicalName:String?
     
     var warehouseName:String {
         
@@ -38,6 +39,13 @@ struct Stock: Codable, Identifiable {
         case LocationTypeKey.binLocation.rawValue:
             if let warehouse = binLocation?.warehouse {
                 return warehouse.name
+            } else {
+                return locationTypeTechnicalName
+            }
+            
+        case LocationTypeKey.specialStock.rawValue:
+            if let specialStockName = specialStockLocationTechnicalName {
+                return specialStockName
             } else {
                 return locationTypeTechnicalName
             }
