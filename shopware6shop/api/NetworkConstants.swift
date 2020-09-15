@@ -20,13 +20,38 @@ struct NetworkConstants {
             "Accept": "application/json",
         ]
     }
-
+    
     //TODO: put properties of Order Class directly into parameter
     static let orderQuery: Parameters =
     [
         "associations":
         [
-            "lineItems" : [:],
+            "lineItems" :
+            [
+                "associations":
+                [
+                    "product" :
+                    [
+                        "associations":
+                        [
+                            "pickwareErpStocks":
+                            [
+                                "associations":
+                                [
+                                    "warehouse" : [:],
+                                    "binLocation" :
+                                    [
+                                        "associations":
+                                        [
+                                            "warehouse" : [:]
+                                        ]
+                                    ]
+                                ]
+                            ]
+                        ]
+                    ]
+                ]
+            ],
             "deliveries":
             [
                 "associations":
@@ -39,10 +64,11 @@ struct NetworkConstants {
         "includes":
         [
             "order" : ["id", "orderNumber", "orderDateTime", "lineItems", "shippingTotal", "deliveries", "stateMachineState"],
-            "order_line_item" : ["id", "label", "productId", "quantity"],
+            "order_line_item" : ["id", "label", "productId", "quantity", "product"],
             "order_delivery" : ["id", "shippingMethod"],
             "state_machine_state" : ["id", "technicalName"],
-            "shipping_method" : ["id", "name"]
+            "shipping_method" : ["id", "name"],
+            "product": ["id", "extensions"]
         ],
         "filter":
         [
