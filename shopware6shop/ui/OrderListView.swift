@@ -14,18 +14,15 @@ struct OrderListView: View {
     
     var body: some View {
     
-        
-        //orders.append(Order.example)
-        
         NavigationView {
             List {
-                ForEach(self.orders.orders) { item in
-                    OrderRowView(item: item)
+                ForEach(self.orders.orders) { order in
+                    OrderRowView(order: order)
                 }
-            }
-            //.listStyle(GroupedListStyle())
-            .navigationBarTitle("Shopware 6 Orders")
+            }.navigationBarTitle("Shopware 6 Orders")
         }.onAppear(perform: loadOrders)
+        
+        //.listStyle(GroupedListStyle())
     }
     
     private func loadOrders() {

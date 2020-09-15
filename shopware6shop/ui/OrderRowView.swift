@@ -10,36 +10,38 @@ import SwiftUI
 
 struct OrderRowView: View {
     
-    var item: Order
+    var order: Order
     
     var body: some View {
         
-        HStack {
-
-            //VStack places Views vertically
-            VStack(alignment: .leading) {
-                Text("Order number: \(item.orderNumber)")
-                Text(item.orderDateTimeFormatted)
-                //Text(String("\(item.lineItemsCount)"))
-            }
+        NavigationLink(destination: OrderDetailView(order: order)) {
+            HStack {
             
-            //That will automatically take up all available free space, meaning that our picture will now be on the far left and the restrictions on the far right.
-            Spacer()
-            
-            //tell the restriction string is the id itself
-            //VStack places Views vertically
-            VStack(alignment: .leading) {
-                Text(String("Items: \(item.lineItemsCount)"))
-                Text(String("Shipping: \(item.shippingMethod)"))
+                //VStack places Views vertically
+                VStack(alignment: .leading) {
+                    Text("Order number: \(order.orderNumber)")
+                    Text(order.orderDateTimeFormatted)
+                    //Text(String("\(item.lineItemsCount)"))
+                }
+                
+                //That will automatically take up all available free space, meaning that our picture will now be on the far left and the restrictions on the far right.
+                Spacer()
+                
+                //tell the restriction string is the id itself
+                //VStack places Views vertically
+                VStack(alignment: .leading) {
+                    Text(String("Items: \(order.lineItemsCount)"))
+                    Text(String("Shipping: \(order.shippingMethod)"))
+                }
             }
         }
     }
 }
 
 /*
-struct OrderRowView_Previews: PreviewProvider {
-    static var previews: some View {
-        OrderRowView(item: Order.example)
-    }
-}
+ struct OrderRowView_Previews: PreviewProvider {
+ static var previews: some View {
+ OrderRowView(item: Order.example)
+ }
+ }
  */
