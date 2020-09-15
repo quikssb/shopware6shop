@@ -12,4 +12,5 @@ struct Warehouse: Codable, Identifiable {
     
     var id:String
     var name:String
+    var isDefault:Bool
 }

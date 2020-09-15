@@ -31,7 +31,7 @@ struct OrderDetailView: View {
                             Text("Name: \(item.label)")
                             Text("Article Number: \(item.productId)")
                             Text(String("Quantity: \(item.quantity)"))
-                            Text(item.product.stockDescription)
+                            Text(item.product.mainWarehouseAndQuantity)
                         }
                     }
                 }.navigationBarTitle("Items")

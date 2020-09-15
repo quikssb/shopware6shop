@@ -11,15 +11,18 @@ import Foundation
 struct Product:Codable {
     var extensions:Extension
     
-    var stockQuantity:Int {
-        
-        var quantity = 0
+    var mainWarehouseAndQuantity:String {
+                
+        var name:String = String()
         
         extensions.pickwareErpStocks.forEach() { stock in
-            quantity = quantity + stock.quantity
+            
+            if let mainWarehouseTmp = stock.mainWarehouse{
+                name = mainWarehouseTmp.name
+            }
         }
         
-        return quantity
+        return "\(name), Quantity: \(getStockQuantityMainWarehouse(name: name))"
     }
     
     var stockDescription:String {
@@ -33,5 +36,19 @@ struct Product:Codable {
         }
         
         return description
+    }
+    
+    func getStockQuantityMainWarehouse(name: String) -> Int {
+        
+        var quantity = 0
+        
+        extensions.pickwareErpStocks.forEach() { stock in
+            
+            if(name == stock.warehouseName) {
+                quantity = quantity + stock.quantity
+            }
+        }
+        
+        return quantity
     }
 }

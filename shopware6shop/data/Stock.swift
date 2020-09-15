@@ -13,7 +13,6 @@ struct Stock: Codable, Identifiable {
     enum LocationTypeKey: String {
         case warehouse = "warehouse"
         case binLocation = "bin_location"
-        case specialStock = "special_stock_location"
     }
 
     var id:String
@@ -41,15 +40,33 @@ struct Stock: Codable, Identifiable {
                 return locationTypeTechnicalName
             }
             
-        case LocationTypeKey.specialStock.rawValue:
-            if let specialStockName = specialStockLocationTechnicalName {
-                return specialStockName
-            } else {
-                return locationTypeTechnicalName
-            }
-            
         default:
             return locationTypeTechnicalName
         }
+    }
+    
+    var mainWarehouse:Warehouse? {
+
+        switch locationTypeTechnicalName {
+            
+        case LocationTypeKey.warehouse.rawValue:
+            if let warehouse = warehouse {
+                if(warehouse.isDefault) {
+                    return warehouse
+                }
+            }
+            
+        case LocationTypeKey.binLocation.rawValue:
+            if let warehouse = warehouse {
+                if(warehouse.isDefault) {
+                    return warehouse
+                }
+            }
+            
+        default:
+            return nil
+        }
+        
+        return nil
     }
 }
