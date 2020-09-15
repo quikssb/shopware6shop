@@ -36,6 +36,24 @@ struct NetworkConstants {
                         [
                             "pickwareErpStocks":
                             [
+                                "filter":
+                                [
+                                    "type":"multi",
+                                    "queries":
+                                        [
+                                            [
+                                                "type":"equals",
+                                                "field":"locationType.technicalName",
+                                                "value":"warehouse"
+                                            ],
+                                            [
+                                                "type":"equals",
+                                                "field":"locationType.technicalName",
+                                                "value":"bin_location"
+                                            ],
+                                        ],
+                                    "operator":"OR"
+                                ],
                                 "associations":
                                 [
                                     "warehouse" : [:],
