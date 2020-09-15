@@ -22,7 +22,25 @@ struct OrderDetailView: View {
 
                 List {
                     ForEach(self.order.lineItems) { item in
-                        Text(item.label)
+                        
+                        HStack {
+                            //TODO: show picture later
+                            //Spacer()
+                            
+                            VStack(alignment: .leading) {
+                                Text("Name: \(item.label)")
+                                Text("Article Number: \(item.productId)")
+                            }
+                            
+                            Spacer()
+                            
+                            //tell the restriction string is the id itself
+                            //VStack places Views vertically
+                            VStack(alignment: .leading) {
+                                Text(String("Quantity: \(item.quantity)"))
+                                Text("lagerplatz")
+                            }
+                        }
                         
                         
                     }
