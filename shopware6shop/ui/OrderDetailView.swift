@@ -35,9 +35,24 @@ struct OrderDetailView: View {
                         }
                     }
                 }.navigationBarTitle("Items")
+                
+                HStack(alignment: .center) {
+                    Button(action: {
+                        print("BUtton pressed")
+                    }) {
+                        Spacer()
+                        Text("Send order")
+                        .padding()
+                        .background(Color.blue)
+                        .foregroundColor(.white)
+                        .font(.title)
+                        Spacer()
+                    }
+                }
+
+                
             }.navigationBarTitle("Order number \(order.orderNumber)")
         }
-    
 }
 
 /*
