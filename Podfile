@@ -6,6 +6,7 @@ target 'shopware6shop' do
   use_frameworks!
 
   # Pods for shopware6shop
-pod 'Alamofire', '~> 5.2'
+  pod 'Alamofire', '~> 5.2'
+  pod 'SwiftDate', '~> 6.1'
 
 end

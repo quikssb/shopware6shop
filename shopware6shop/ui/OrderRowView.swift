@@ -18,8 +18,9 @@ struct OrderRowView: View {
 
             //VStack places Views vertically
             VStack(alignment: .leading) {
-                Text(item.id)
-                //Text(String("\(item.productCount)"))
+                Text(item.orderNumber)
+                Text(item.orderDateTimeFormatted)
+                //Text(String("\(item.lineItemsCount)"))
             }
             
             //That will automatically take up all available free space, meaning that our picture will now be on the far left and the restrictions on the far right.
@@ -27,10 +28,10 @@ struct OrderRowView: View {
             
             //tell the restriction string is the id itself
             //VStack places Views vertically
-           // VStack(alignment: .leading) {
-               // Text(item.attributes.orderDateTime)
-               // Text(String("\(item.attributes.orderNumber)"))
-           // }
+            VStack(alignment: .leading) {
+                Text(String("\(item.lineItemsCount)"))
+                Text(String("\(item.shippingMethod)"))
+            }
         }
     }
 }

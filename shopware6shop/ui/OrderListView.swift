@@ -35,14 +35,14 @@ struct OrderListView: View {
             if let ordersFromServer = orderResponse.orders {
                 self.orders.orders = ordersFromServer.data
             } else {
-                //TODO: show little message, equivalent to Toast in Android
+                //TODO: show little message, äquivalent to Toast in Android
                 print(orderResponse.printedError ?? "An error occured")
             }
         })
     }
 }
 
-struct OderListView_Previews: PreviewProvider {
+struct OrderListView_Previews: PreviewProvider {
     static var previews: some View {
         OrderListView()
     }

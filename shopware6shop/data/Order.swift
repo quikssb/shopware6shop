@@ -7,10 +7,11 @@
 //
 
 import Foundation
+import SwiftDate
 
-struct Order: Codable, Identifiable {
+class Order: Codable, Identifiable {
     
-    //todo: geht auch uuid?
+    //TODO: geht auch uuid?
     var id: String
     var orderNumber: String
     var orderDateTime: String
@@ -22,8 +23,23 @@ struct Order: Codable, Identifiable {
     }
     
     var shippingMethod: String {
-        //return deliveries[0].shippingMethod
-        return "a"
+        if let delivery = deliveries.first {
+            return delivery.shippingMethod.name
+        } else {
+            return ""
+        }
+    }
+    
+    var orderDateTimeFormatted: String {
+        
+        //TODO: überprüfe und konvertiere ggf Zeit in deutsche Zeitzone
+        let dateFormat = "dd.MM.yyyy HH:mm"
+
+        if let formattedDate = orderDateTime.toDate() {
+            return "\(formattedDate.toFormat(dateFormat))"
+        } else {
+            return ""
+        }
     }
     //
 
