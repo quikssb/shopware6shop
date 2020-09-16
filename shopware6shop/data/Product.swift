@@ -23,7 +23,7 @@ struct Product:Codable {
                 name = mainWarehouseTmp.name
             }
         }
-        
+        //TODO: ui logic into views
         return "\(name), Quantity: \(getStockQuantityMainWarehouse(name: name))"
     }
     
@@ -42,17 +42,9 @@ struct Product:Codable {
     
     func getMainWarehouseId() -> String {
         
-        var id:String = ""
-        
-        extensions.pickwareErpStocks.forEach() { stock in
-            
-            if let mainWarehouseTmp = stock.mainWarehouse{
-                id =  mainWarehouseTmp.id
-                //TODO: understand how break works
-            }
-        }
-        
-        return id
+        extensions.pickwareErpStocks.compactMap({
+            $0.mainWarehouse
+        }).first?.id ?? ""
     }
     
     func getStockQuantityMainWarehouse(name: String) -> Int {
@@ -62,7 +54,7 @@ struct Product:Codable {
         extensions.pickwareErpStocks.forEach() { stock in
             
             if(name == stock.warehouseName) {
-                quantity = quantity + stock.quantity
+                quantity += stock.quantity
             }
         }
         

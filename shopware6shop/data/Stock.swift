@@ -22,6 +22,8 @@ struct Stock: Codable, Identifiable {
     var binLocation:BinLocation?
     var specialStockLocationTechnicalName:String?
     
+    //TODO: use where clauses
+    //consider removing enum and just check properties for nil
     var mainWarehouse:Warehouse? {
 
         switch locationTypeTechnicalName {
@@ -34,7 +36,7 @@ struct Stock: Codable, Identifiable {
             }
             
         case LocationTypeKey.binLocation.rawValue:
-            if let warehouse = warehouse {
+            if let warehouse = binLocation?.warehouse {
                 if(warehouse.isDefault) {
                     return warehouse
                 }

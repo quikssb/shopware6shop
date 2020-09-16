@@ -32,6 +32,8 @@ struct NetworkService {
     
     static func getOrders(completion: @escaping (OrderResponse) -> Void) {
         
+        //TODO: promises
+        
         AF.request(NetworkConstants.orderURL,
                    method: .post,
                    parameters: NetworkConstants.getOrderQuery,
