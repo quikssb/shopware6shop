@@ -12,6 +12,17 @@ struct Product:Codable {
     var extensions:Extension
     var media:[Media]
     
+    var firstImageUrl:String? {
+        
+        var firstImageUrl:String?
+        
+        firstImageUrl = media.first
+            { $0.imageUrl != nil }?
+            .imageUrl
+        
+        return firstImageUrl
+    }
+    
     //TODO: optimize logic of computing mainWarehouse and its functions
     
     var mainWarehouseAndQuantityDescription:String {

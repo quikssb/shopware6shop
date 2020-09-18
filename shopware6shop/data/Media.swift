@@ -10,6 +10,19 @@ import Foundation
 
 struct Media:Codable, Identifiable {
     
+    let mediaTypeImage = "IMAGE"
+    
     var id:String
     var media:MediaDetail
+    
+    var imageUrl:String? {
+        
+        var imageUrl:String?
+        
+        if(media.mediaType.name == mediaTypeImage) {
+            imageUrl = media.url;
+        }
+        
+        return imageUrl
+    }
 }

@@ -44,10 +44,14 @@ struct OrderDetailView: View {
                             Text(String("Quantity: \(item.quantity)"))
                             Text("Stock: \(item.product.mainWarehouseAndQuantityDescription)")
                             
-                            WebImage(url: URL(string: item.product.media.first!.media.url))
-                                .resizable()
-                                .scaledToFit()
-                                .padding()
+                            //Note: SwiftUI doesn't like optional unwrapping..
+                            if(item.product.firstImageUrl != nil) {
+                                
+                                WebImage(url: URL(string: item.product.firstImageUrl!))
+                                    .resizable()
+                                    .scaledToFit()
+                                    .padding()
+                            }
                         }
                     }
                 }
