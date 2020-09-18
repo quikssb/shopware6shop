@@ -11,9 +11,10 @@ import Alamofire
 
 struct NetworkConstants {
     
-    static let loginURL = "https://next.pickware.de/api/oauth/token"
-    static let orderURL = "https://next.pickware.de/api/v3/search/order"
-    static let shipOrderURL = "https://next.pickware.de/api/v2/_action/pickware-erp/ship-order-delivery-completely"
+    static let baseURL = "https://sw6demo.pickware.de"
+    static let loginURL = baseURL + "/api/oauth/token"
+    static let orderURL = baseURL + "/api/v3/search/order"
+    static let shipOrderURL = baseURL +  "/api/v2/_action/pickware-erp/ship-order-delivery-completely"
     
     static var headers = { (token: String) -> HTTPHeaders in
         return [

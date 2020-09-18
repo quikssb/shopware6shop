@@ -17,6 +17,6 @@ struct LoginRequest: Codable {
     var password: String
     
     #if DEBUG
-    static let testuser = LoginRequest(grant_type: "password", client_id: "administration", scopes: "write", username: "marcel", password: "probetage")
+    static let testuser = LoginRequest(grant_type: "password", client_id: "administration", scopes: "write", username: "demo", password: "demo")
     #endif
 }
