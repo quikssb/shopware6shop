@@ -75,6 +75,9 @@ struct OrderDetailView: View {
     
     private func shipOrder() {
         
+        NetworkService.shipAndCompleteOrder(orderDeliveryId: self.order.deliveries.first!.id, warehouseId: self.order.lineItems.first!.product.getMainWarehouseId(), orderId: self.order.id)
+        
+        /*
         NetworkService.shipOrder(
             orderDeliveryId: self.order.deliveries.first!.id,
             warehouseId: self.order.lineItems.first!.product.getMainWarehouseId(),
@@ -87,5 +90,6 @@ struct OrderDetailView: View {
                     self.buttonText = "Error"
                 }
         })
+         */
     }
 }

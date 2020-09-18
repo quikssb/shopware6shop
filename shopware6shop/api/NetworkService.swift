@@ -8,6 +8,7 @@
 
 import Alamofire
 import Foundation
+import PromiseKit
 
 struct NetworkService {
     
@@ -98,6 +99,53 @@ struct NetworkService {
 
                     completion(false, response.error?.errorDescription ?? "an error occured")
                 }
+        }
+    }
+    
+    static func shipAndCompleteOrder(orderDeliveryId: String, warehouseId: String, orderId: String) {
+        
+        firstly {
+            when(resolved: shipAndCompleteOrderRequest(
+                url: NetworkConstants.pickwareErpShipOrderURL,
+                parameters: NetworkConstants.pickwareErpShipOrderParameters(orderDeliveryId, warehouseId)))
+        }.then { success in
+            shipAndCompleteOrderRequest(
+            url: NetworkConstants.shipOrderURL(orderDeliveryId),
+            parameters: NetworkConstants.shipOrderParameters)
+        }.then { success in
+            shipAndCompleteOrderRequest(
+            url: NetworkConstants.processOrderURL(orderId),
+            parameters: NetworkConstants.shipOrderParameters)
+        }.then { success in
+            shipAndCompleteOrderRequest(
+            url: NetworkConstants.completeOrderURL(orderId),
+            parameters: NetworkConstants.shipOrderParameters)
+        }.catch { error in
+            print(error)
+        }
+    }
+    
+    static func shipAndCompleteOrderRequest(url:String, parameters:Parameters) -> Promise<Bool> {
+        
+        return Promise { promise in
+
+            AF.request(url,
+                       method: .post,
+                       parameters: parameters,
+                       encoding: JSONEncoding.default,
+                       headers: NetworkConstants.headers(token))
+            .validate()
+            .response { response in
+                    
+                switch response.result {
+                    
+                case .success(_):
+                    promise.fulfill(true)
+                    
+                case .failure(let error):
+                    promise.reject(error)
+                }
+            }
         }
     }
 }
