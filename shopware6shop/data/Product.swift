@@ -10,6 +10,7 @@ import Foundation
 
 struct Product:Codable {
     var extensions:Extension
+    var media:[Media]
     
     //TODO: optimize logic of computing mainWarehouse and its functions
     

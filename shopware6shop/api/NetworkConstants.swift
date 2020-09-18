@@ -75,7 +75,8 @@ struct NetworkConstants {
                                         ]
                                     ]
                                 ]
-                            ]
+                            ],
+                            "media" : [:]
                         ]
                     ]
                 ]
@@ -96,7 +97,7 @@ struct NetworkConstants {
             "order_delivery" : ["id", "shippingMethod"],
             "state_machine_state" : ["id", "technicalName"],
             "shipping_method" : ["id", "name"],
-            "product": ["id", "extensions"]
+            "product": ["id", "extensions", "media"]
         ],
         "filter":
         [
