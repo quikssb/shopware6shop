@@ -9,4 +9,5 @@ target 'shopware6shop' do
   pod 'Alamofire', '~> 5.2'
   pod 'SwiftDate', '~> 6.1'
   pod 'SDWebImageSwiftUI'
+  pod "PromiseKit", "~> 6.8"
 end

@@ -1,5 +1,14 @@
 PODS:
   - Alamofire (5.2.2)
+  - PromiseKit (6.13.1):
+    - PromiseKit/CorePromise (= 6.13.1)
+    - PromiseKit/Foundation (= 6.13.1)
+    - PromiseKit/UIKit (= 6.13.1)
+  - PromiseKit/CorePromise (6.13.1)
+  - PromiseKit/Foundation (6.13.1):
+    - PromiseKit/CorePromise
+  - PromiseKit/UIKit (6.13.1):
+    - PromiseKit/CorePromise
   - SDWebImage (5.9.1):
     - SDWebImage/Core (= 5.9.1)
   - SDWebImage/Core (5.9.1)
@@ -9,22 +18,25 @@ PODS:
 
 DEPENDENCIES:
   - Alamofire (~> 5.2)
+  - PromiseKit (~> 6.8)
   - SDWebImageSwiftUI
   - SwiftDate (~> 6.1)
 
 SPEC REPOS:
   trunk:
     - Alamofire
+    - PromiseKit
     - SDWebImage
     - SDWebImageSwiftUI
     - SwiftDate
 
 SPEC CHECKSUMS:
   Alamofire: 814429acc853c6c54ff123fc3d2ef66803823ce0
+  PromiseKit: 28fda91c973cc377875d8c0ea4f973013c05b6db
   SDWebImage: a990c053fff71e388a10f3357edb0be17929c9c5
   SDWebImageSwiftUI: 43687ffe232ddd33fe0659498b7ca9884fdd6b35
   SwiftDate: fa2bb3962056bb44047b4b85a30044e5eae30b03
 
-PODFILE CHECKSUM: 3009400d674fe0c5b0967fd2483638fc8728cfd7
+PODFILE CHECKSUM: 6e437c254069d64c916a48b9bbb3f401b7ec55fe
 
 COCOAPODS: 1.9.3
