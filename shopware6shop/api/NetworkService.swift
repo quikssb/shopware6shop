@@ -102,12 +102,15 @@ struct NetworkService {
         }
     }
     
-    static func shipAndCompleteOrder(orderDeliveryId: String, warehouseId: String, orderId: String) {
+    static func shipAndCompleteOrder(orderDeliveryId: String, warehouseId: String, orderId: String,
+                                     completion: @escaping (Bool, Error?) -> Void) {
         
         firstly {
-            when(resolved: shipAndCompleteOrderRequest(
-                url: NetworkConstants.pickwareErpShipOrderURL,
-                parameters: NetworkConstants.pickwareErpShipOrderParameters(orderDeliveryId, warehouseId)))
+            when(resolved:
+                shipAndCompleteOrderRequest(
+                    url: NetworkConstants.pickwareErpShipOrderURL,
+                    parameters: NetworkConstants.pickwareErpShipOrderParameters(orderDeliveryId, warehouseId))
+            )
         }.then { success in
             shipAndCompleteOrderRequest(
             url: NetworkConstants.shipOrderURL(orderDeliveryId),
@@ -120,8 +123,10 @@ struct NetworkService {
             shipAndCompleteOrderRequest(
             url: NetworkConstants.completeOrderURL(orderId),
             parameters: NetworkConstants.shipOrderParameters)
+        }.done { success in
+            completion(true, nil)
         }.catch { error in
-            print(error)
+            completion(false, error)
         }
     }
     
