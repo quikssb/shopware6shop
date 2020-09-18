@@ -18,45 +18,56 @@ struct OrderDetailView: View {
     
     var body: some View {
         
+        VStack(alignment: .center) {
+            
+            Text("Order date: \(order.orderDateTimeFormatted)")
+            Text(String("Number of items: \(order.lineItemsCount)"))
+            Text(String("Shipping: \(order.shippingMethod)"))
+            
             VStack(alignment: .leading) {
                 
-                Text("Order date: \(order.orderDateTimeFormatted)")
-                Text(String("Number of items: \(order.lineItemsCount)"))
-                Text(String("Shipping: \(order.shippingMethod)"))
-
+                Text("Items")
+                    .fontWeight(.bold)
+                    .font(.title)
+                    .padding()
+                
                 List {
                     ForEach(self.order.lineItems) { item in
                         
-                        WebImage(url: URL(string: item.product.media.first!.media.url))
-                            .resizable()
-                            .scaledToFit()
+                        VStack(alignment: .center) {
+                            Text("\(item.label)")
+                                .font(.title)
+                                .padding()
                             
-                        VStack(alignment: .leading) {
-                            Text("Name: \(item.label)")
-                            Text("Article Number: \(item.productId)")
+                            Text("Article Number:")
+                            Text("\(item.productId)")
                             Text(String("Quantity: \(item.quantity)"))
-                            Text(item.product.mainWarehouseAndQuantityDescription)
+                            Text("Stock: \(item.product.mainWarehouseAndQuantityDescription)")
+                            
+                            WebImage(url: URL(string: item.product.media.first!.media.url))
+                                .resizable()
+                                .scaledToFit()
+                                .padding()
                         }
                     }
-                }.navigationBarTitle("Items")
-                
-                HStack(alignment: .center) {
-                    Button(action: {
-                        self.shipOrder()
-                    }) {
-                        Spacer()
-                        Text(buttonText)
+                }
+            }
+            
+            HStack(alignment: .center) {
+                Button(action: {
+                    self.shipOrder()
+                }) {
+                    Spacer()
+                    Text(buttonText)
                         .padding()
                         .background(Color.blue)
                         .foregroundColor(.white)
                         .font(.title)
-                        Spacer()
-                    }.disabled(buttonDisabled)
-                }
-
-                
-            }.navigationBarTitle("Order number \(order.orderNumber)")
-        }
+                    Spacer()
+                }.disabled(buttonDisabled)
+            }
+        }.navigationBarTitle("Order number \(order.orderNumber)")
+    }
     
     private func shipOrder() {
         
