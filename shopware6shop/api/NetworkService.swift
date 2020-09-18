@@ -113,16 +113,19 @@ struct NetworkService {
             )
         }.then { success in
             shipAndCompleteOrderRequest(
-            url: NetworkConstants.shipOrderURL(orderDeliveryId),
-            parameters: NetworkConstants.shipOrderParameters)
+                url: NetworkConstants.shipOrderURL(orderDeliveryId),
+                parameters: NetworkConstants.shipOrderParameters
+            )
         }.then { success in
             shipAndCompleteOrderRequest(
-            url: NetworkConstants.processOrderURL(orderId),
-            parameters: NetworkConstants.shipOrderParameters)
+                url: NetworkConstants.processOrderURL(orderId),
+                parameters: NetworkConstants.shipOrderParameters
+            )
         }.then { success in
             shipAndCompleteOrderRequest(
-            url: NetworkConstants.completeOrderURL(orderId),
-            parameters: NetworkConstants.shipOrderParameters)
+                url: NetworkConstants.completeOrderURL(orderId),
+                parameters: NetworkConstants.shipOrderParameters
+            )
         }.done { success in
             completion(true, nil)
         }.catch { error in
