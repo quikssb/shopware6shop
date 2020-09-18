@@ -7,6 +7,7 @@
 //
 
 import SwiftUI
+import SDWebImageSwiftUI
 
 struct OrderDetailView: View {
     
@@ -26,9 +27,9 @@ struct OrderDetailView: View {
                 List {
                     ForEach(self.order.lineItems) { item in
                         
-                        //HStack {
-                            //TODO: show picture later
-                            //Spacer()
+                        WebImage(url: URL(string: item.product.media.first!.media.url))
+                            .resizable()
+                            .scaledToFit()
                             
                         VStack(alignment: .leading) {
                             Text("Name: \(item.label)")

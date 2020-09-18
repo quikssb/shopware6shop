@@ -8,5 +8,5 @@ target 'shopware6shop' do
   # Pods for shopware6shop
   pod 'Alamofire', '~> 5.2'
   pod 'SwiftDate', '~> 6.1'
-
+  pod 'SDWebImageSwiftUI'
 end
