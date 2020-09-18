@@ -14,7 +14,21 @@ struct NetworkConstants {
     static let baseURL = "https://sw6demo.pickware.de"
     static let loginURL = baseURL + "/api/oauth/token"
     static let orderURL = baseURL + "/api/v3/search/order"
-    static let shipOrderURL = baseURL +  "/api/v2/_action/pickware-erp/ship-order-delivery-completely"
+    
+    static let pickwareErpShipOrderURL =
+        baseURL +  "/api/v2/_action/pickware-erp/ship-order-delivery-completely"
+
+    static var shipOrderURL = { (deliveryId: String) -> String in
+        return baseURL + "/api/v2/_action/order_delivery/\(deliveryId)/state/ship"
+    }
+    
+    static var processOrderURL = { (orderId: String) -> String in
+        return baseURL + "/api/v2/_action/order/\(orderId)/state/process"
+    }
+    
+    static var completeOrderURL = { (orderId: String) -> String in
+        return baseURL + "/api/v2/_action/order/\(orderId)/state/complete"
+    }
     
     static var headers = { (token: String) -> HTTPHeaders in
         return [
@@ -23,7 +37,7 @@ struct NetworkConstants {
         ]
     }
     
-    static var shipOrderParameters = { (orderDeliveryId: String, warehouseId: String) -> Parameters in
+    static var pickwareErpShipOrderParameters = { (orderDeliveryId: String, warehouseId: String) -> Parameters in
         return [
             "orderDeliveryId": "\(orderDeliveryId)",
             "warehouseId": "\(warehouseId)",

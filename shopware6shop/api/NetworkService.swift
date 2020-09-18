@@ -66,9 +66,9 @@ struct NetworkService {
 
     static func shipOrder(orderDeliveryId: String, warehouseId: String, completion: @escaping (Bool, String) -> Void) {
         
-        AF.request(NetworkConstants.shipOrderURL,
+        AF.request(NetworkConstants.pickwareErpShipOrderURL,
                    method: .post,
-                   parameters: NetworkConstants.shipOrderParameters(orderDeliveryId, warehouseId),
+                   parameters: NetworkConstants.pickwareErpShipOrderParameters(orderDeliveryId, warehouseId),
                    encoding: JSONEncoding.default,
                    headers: NetworkConstants.headers(token))
                   .responseJSON() { response in
