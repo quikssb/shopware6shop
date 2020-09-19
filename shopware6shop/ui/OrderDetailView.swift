@@ -13,13 +13,14 @@ struct OrderDetailView: View {
     
     var order:Order
     
+    @State private var loading = false
     @State private var buttonDisabled = false
     @State private var buttonText = "Send order"
     
     var body: some View {
         
         VStack(alignment: .center) {
-            
+                
             Text("Order date: \(order.orderDateTimeFormatted)")
             Text(String("Number of items: \(order.lineItemsCount)"))
             Text(String("Shipping: \(order.shippingMethod)"))
@@ -57,7 +58,10 @@ struct OrderDetailView: View {
                 }
             }
             
+            ActivityIndicator($loading)
+            
             HStack(alignment: .center) {
+
                 Button(action: {
                     self.buttonDisabled = true
                     self.shipOrder()
@@ -76,6 +80,8 @@ struct OrderDetailView: View {
     
     private func shipOrder() {
         
+        self.loading = true
+        
         NetworkService.shipAndCompleteOrder(
             orderDeliveryId: self.order.deliveries.first!.id,
             warehouseId: self.order.lineItems.first!.product.getMainWarehouseId(),
@@ -84,6 +90,7 @@ struct OrderDetailView: View {
                 
                 if(success) {
                     self.buttonText = "Shipped"
+                    self.loading = false
                 } else {
                     self.buttonText = "Error"
                     print(error.debugDescription)
