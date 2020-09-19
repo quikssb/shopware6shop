@@ -13,10 +13,11 @@ let lightGreyColor = Color(red: 239.0/255.0, green: 243.0/255.0, blue: 244.0/255
 struct LoginView: View {
     
     @State private var loginDisabled = false
-    @State private var buttonText = "LOGIN"
     @State private var loading = false
+    @State private var buttonText = "LOGIN"
     
     @State private var url: String = "https://sw6demo.pickware.de"
+    //TODO: make these fields empty in the end
     @State private var username: String = "demo"
     @State private var password: String = "demo"
     
