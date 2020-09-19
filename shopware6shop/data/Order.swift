@@ -17,7 +17,7 @@ class Order: Codable, Identifiable {
     //get inserted manually. After that the JSONDecoder needs to be told
     //to use that extension.
     
-    var id: UUID
+    var id: String
     var orderNumber: String
     var orderDateTime: String
     var lineItems: [Item]
