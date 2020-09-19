@@ -10,6 +10,7 @@ import SwiftUI
 
 struct OrderListView: View {
     
+    @ObservedObject var viewRouter: ViewRouter
     @EnvironmentObject var orders : ObservedOrders
     
     var body: some View {
@@ -35,11 +36,5 @@ struct OrderListView: View {
                 print(error.localizedDescription)
             }
         })
-    }
-}
-
-struct OrderListView_Previews: PreviewProvider {
-    static var previews: some View {
-        OrderListView()
     }
 }

@@ -13,6 +13,8 @@ let lightGreyColor = Color(red: 239.0/255.0, green: 243.0/255.0, blue: 244.0/255
 
 struct LoginView: View {
     
+    @ObservedObject var viewRouter: ViewRouter
+    
     @State private var loginDisabled = false
     @State private var loading = false
     @State private var buttonText = "LOGIN"
@@ -76,20 +78,15 @@ struct LoginView: View {
             self.loginDisabled = false
             
             if(success) {
-                self.buttonText = "yes"
+                //With this command the OrderListView gets opened
+                self.viewRouter.currentPage = MotherView.listViewKey
             } else {
                 
                 if let error = error {
                     print(error.localizedDescription)
                 }
-                self.buttonText = "no"
+                self.buttonText = "ERROR"
             }
         }
-    }
-}
-
-struct LoginView_Previews: PreviewProvider {
-    static var previews: some View {
-        LoginView()
     }
 }

@@ -11,6 +11,8 @@
 		1F6384EB2514CAD300E326B2 /* MediaDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F6384EA2514CAD300E326B2 /* MediaDetail.swift */; };
 		1F6384ED2514CB5500E326B2 /* MediaType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F6384EC2514CB5500E326B2 /* MediaType.swift */; };
 		1F6384F12515F8E000E326B2 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F6384F02515F8E000E326B2 /* LoginView.swift */; };
+		1F6384F5251614CC00E326B2 /* MotherView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F6384F4251614CC00E326B2 /* MotherView.swift */; };
+		1F6384F7251614EE00E326B2 /* ViewRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F6384F6251614EE00E326B2 /* ViewRouter.swift */; };
 		1FF932D1250F983D002EF14E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FF932D0250F983D002EF14E /* AppDelegate.swift */; };
 		1FF932D3250F983D002EF14E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FF932D2250F983D002EF14E /* SceneDelegate.swift */; };
 		1FF932D5250F983D002EF14E /* OrderListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FF932D4250F983D002EF14E /* OrderListView.swift */; };
@@ -43,6 +45,8 @@
 		1F6384EA2514CAD300E326B2 /* MediaDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaDetail.swift; sourceTree = "<group>"; };
 		1F6384EC2514CB5500E326B2 /* MediaType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaType.swift; sourceTree = "<group>"; };
 		1F6384F02515F8E000E326B2 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		1F6384F4251614CC00E326B2 /* MotherView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotherView.swift; sourceTree = "<group>"; };
+		1F6384F6251614EE00E326B2 /* ViewRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewRouter.swift; sourceTree = "<group>"; };
 		1FF932CD250F983D002EF14E /* shopware6shop.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = shopware6shop.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1FF932D0250F983D002EF14E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1FF932D2250F983D002EF14E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -136,6 +140,8 @@
 				1FF932FF25100FB3002EF14E /* ObservedOrders.swift */,
 				1FF933072510B34F002EF14E /* OrderDetailView.swift */,
 				1F6384F02515F8E000E326B2 /* LoginView.swift */,
+				1F6384F4251614CC00E326B2 /* MotherView.swift */,
+				1F6384F6251614EE00E326B2 /* ViewRouter.swift */,
 			);
 			path = ui;
 			sourceTree = "<group>";
@@ -321,6 +327,8 @@
 				1FF932E9250F9B39002EF14E /* Order.swift in Sources */,
 				1FF933102510CF42002EF14E /* BinLocation.swift in Sources */,
 				1FF932FC250FFE8A002EF14E /* Delivery.swift in Sources */,
+				1F6384F5251614CC00E326B2 /* MotherView.swift in Sources */,
+				1F6384F7251614EE00E326B2 /* ViewRouter.swift in Sources */,
 				1FF932F0250FA287002EF14E /* NetworkService.swift in Sources */,
 				1FF933082510B34F002EF14E /* OrderDetailView.swift in Sources */,
 				1FF9330E2510CF29002EF14E /* Warehouse.swift in Sources */,
