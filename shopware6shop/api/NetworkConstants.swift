@@ -52,7 +52,7 @@ struct NetworkConstants {
     static let shipOrderParameters:Parameters = ["documentIds": [:]]
     
     //TODO: put properties of Order Class directly into parameter
-    //TODO: optimize payload
+    //How does this work?
     static let getOrderQuery: Parameters =
     [
         "associations":

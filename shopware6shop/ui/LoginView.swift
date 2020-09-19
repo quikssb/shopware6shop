@@ -20,9 +20,8 @@ struct LoginView: View {
     @State private var buttonText = "LOGIN"
     
     @State private var url: String = "https://sw6demo.pickware.de"
-    //TODO: make these fields empty in the end
-    @State private var username: String = "demo"
-    @State private var password: String = "demo"
+    @State private var username: String = String()
+    @State private var password: String = String()
     
     var body: some View {
         
