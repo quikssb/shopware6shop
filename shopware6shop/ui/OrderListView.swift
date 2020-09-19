@@ -19,8 +19,10 @@ struct OrderListView: View {
                 ForEach(self.orders.orders) { order in
                     OrderRowView(order: order)
                 }
-            }.navigationBarTitle("Shopware 6 Orders")
-        }.onAppear(perform: loadOrders)
+            }
+            .navigationBarTitle("Shopware 6 Orders")
+            .onAppear(perform: loadOrders)
+        }
     }
     
     private func loadOrders() {
