@@ -25,39 +25,7 @@ struct OrderDetailView: View {
             Text(String("Number of items: \(order.lineItemsCount)"))
             Text(String("Shipping: \(order.shippingMethod)"))
             
-            VStack(alignment: .center) {
-                
-                List {
-                    Section(header:
-                        Text("Items")
-                            .frame(maxWidth: .infinity, alignment: .center)
-                    ) {
-                        ForEach(self.order.lineItems) { item in
-                            
-                            VStack(alignment: .center) {
-                                
-                                Text("\(item.label)")
-                                    .font(.title)
-                                    .padding()
-                                
-                                Text("Article Number:")
-                                Text("\(item.productId)")
-                                Text(String("Ordered quantity: \(item.quantity)"))
-                                Text("\(item.product.mainWarehouse?.name ?? "No main warehouse"), Quantity: \(item.product.mainWarehouseStockQuantity)")
-                                
-                                //Note: SwiftUI doesn't like optional unwrapping..
-                                if(item.product.firstImageUrl != nil) {
-                                    
-                                    WebImage(url: URL(string: item.product.firstImageUrl!))
-                                        .resizable()
-                                        .scaledToFit()
-                                        .padding()
-                                }
-                            }
-                        }
-                    }
-                }
-            }
+            ItemsListDetailView(order: order)
             
             ZStack {
                 Button(action: {
@@ -99,7 +67,7 @@ struct OrderDetailView: View {
             orderDeliveryId: orderDeliveryId,
             warehouseId: warehouseId,
             orderId: self.order.id,
-            completion:  {success, error in
+            completion:  { success, error in
                 
                 if(success) {
                     self.buttonText = "SHIPPED"
@@ -109,5 +77,47 @@ struct OrderDetailView: View {
                     print(error.debugDescription)
                 }
         })
+    }
+}
+
+private struct ItemsListDetailView : View {
+    
+    var order:Order
+    
+    var body: some View {
+        
+        VStack(alignment: .center) {
+            
+            List {
+                Section(header:
+                    Text("Items")
+                        .frame(maxWidth: .infinity, alignment: .center)
+                ) {
+                    ForEach(self.order.lineItems) { item in
+                        
+                        VStack(alignment: .center) {
+                            
+                            Text("\(item.label)")
+                                .font(.title)
+                                .padding()
+                            
+                            Text("Article Number:")
+                            Text("\(item.productId)")
+                            Text(String("Ordered quantity: \(item.quantity)"))
+                            Text("\(item.product.mainWarehouse?.name ?? "No main warehouse"), Quantity: \(item.product.mainWarehouseStockQuantity)")
+                            
+                            //Note: SwiftUI doesn't like optional unwrapping..
+                            if(item.product.firstImageUrl != nil) {
+                                
+                                WebImage(url: URL(string: item.product.firstImageUrl!))
+                                    .resizable()
+                                    .scaledToFit()
+                                    .padding()
+                            }
+                        }
+                    }
+                }
+            }
+        }
     }
 }
