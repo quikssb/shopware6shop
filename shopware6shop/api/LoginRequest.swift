@@ -10,13 +10,14 @@ import Foundation
 
 struct LoginRequest: Codable {
     
-    var grant_type: String
-    var client_id: String
-    var scopes: String
+    let grant_type: String = "password"
+    let client_id: String = "administration"
+    let scopes: String = "write"
     var username: String
     var password: String
+    var baseURL: String
     
     #if DEBUG
-    static let testuser = LoginRequest(grant_type: "password", client_id: "administration", scopes: "write", username: "demo", password: "demo")
+    static let testuser = LoginRequest(username: "demo", password: "demo", baseURL: "https://sw6demo.pickware.de")
     #endif
 }

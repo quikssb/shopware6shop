@@ -11,23 +11,28 @@ import Alamofire
 
 struct NetworkConstants {
     
-    static let baseURL = "https://sw6demo.pickware.de"
-    static let loginURL = baseURL + "/api/oauth/token"
-    static let orderURL = baseURL + "/api/v3/search/order"
-    
-    static let pickwareErpShipOrderURL =
-        baseURL +  "/api/v2/_action/pickware-erp/ship-order-delivery-completely"
-
-    static var shipOrderURL = { (deliveryId: String) -> String in
-        return baseURL + "/api/v2/_action/order_delivery/\(deliveryId)/state/ship"
+    static let loginURL = { (baseURL: String) -> String in
+        return "\(baseURL)/api/oauth/token"
     }
     
-    static var processOrderURL = { (orderId: String) -> String in
-        return baseURL + "/api/v2/_action/order/\(orderId)/state/process"
+    static let orderURL = { (baseURL: String) -> String in
+        return "\(baseURL)/api/v3/search/order"
     }
     
-    static var completeOrderURL = { (orderId: String) -> String in
-        return baseURL + "/api/v2/_action/order/\(orderId)/state/complete"
+    static let pickwareErpShipOrderURL = { (baseURL: String) -> String in
+        return "\(baseURL)/api/v2/_action/pickware-erp/ship-order-delivery-completely"
+    }
+        
+    static var shipOrderURL = { (baseURL: String, deliveryId: String) -> String in
+        return "\(baseURL)/api/v2/_action/order_delivery/\(deliveryId)/state/ship"
+    }
+    
+    static var processOrderURL = { (baseURL: String, orderId: String) -> String in
+        return "\(baseURL)/api/v2/_action/order/\(orderId)/state/process"
+    }
+    
+    static var completeOrderURL = { (baseURL: String, orderId: String) -> String in
+        return "\(baseURL)/api/v2/_action/order/\(orderId)/state/complete"
     }
     
     static var headers = { (token: String) -> HTTPHeaders in

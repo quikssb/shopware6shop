@@ -13,6 +13,20 @@ import PromiseKit
 struct NetworkService {
     
     private static var token:String = String()
+    private static var loginRequestData:LoginRequest = LoginRequest.testuser
+    
+    static func login(username:String, password:String, url:String,
+                      completion: @escaping (Bool, Error?) -> Void) {
+        
+        loginRequestData = LoginRequest(username: username, password: password, baseURL: url)
+        
+        loginRequest(loginRequest: loginRequestData)
+        .done {
+            completion(true, nil)
+        }.catch { error in
+            completion(false, error)
+        }
+    }
     
     static func getOrders(completion: @escaping (Orders?, Error?) -> Void) {
         
@@ -23,7 +37,7 @@ struct NetworkService {
             if let httpCode = error.asAFError?.responseCode {
                 if(httpCode == 401) {
                 
-                    loginRequest()
+                    loginRequest(loginRequest: loginRequestData)
                     .done {
                         getOrders(completion: completion)
                     }.catch { error in
@@ -39,22 +53,24 @@ struct NetworkService {
     static func shipAndCompleteOrder(orderDeliveryId: String, warehouseId: String, orderId: String,
                                      completion: @escaping (Bool, Error?) -> Void) {
         
+        let baseURL = loginRequestData.baseURL
+        
         shipAndCompleteOrderRequest(
-            url: NetworkConstants.pickwareErpShipOrderURL,
+            url: NetworkConstants.pickwareErpShipOrderURL(baseURL),
             parameters: NetworkConstants.pickwareErpShipOrderParameters(orderDeliveryId, warehouseId))
         .then {
             shipAndCompleteOrderRequest(
-                url: NetworkConstants.shipOrderURL(orderDeliveryId),
+                url: NetworkConstants.shipOrderURL(baseURL, orderDeliveryId),
                 parameters: NetworkConstants.shipOrderParameters
             )
         }.then {
             shipAndCompleteOrderRequest(
-                url: NetworkConstants.processOrderURL(orderId),
+                url: NetworkConstants.processOrderURL(baseURL, orderId),
                 parameters: NetworkConstants.shipOrderParameters
             )
         }.then {
             shipAndCompleteOrderRequest(
-                url: NetworkConstants.completeOrderURL(orderId),
+                url: NetworkConstants.completeOrderURL(baseURL, orderId),
                 parameters: NetworkConstants.shipOrderParameters
             )
         }.done {
@@ -63,7 +79,7 @@ struct NetworkService {
             if let httpCode = error.asAFError?.responseCode {
                 if(httpCode == 401) {
                 
-                    loginRequest()
+                    loginRequest(loginRequest: loginRequestData)
                     .done {
                         shipAndCompleteOrder(orderDeliveryId: orderDeliveryId, warehouseId: warehouseId, orderId: orderId,completion: completion)
                     }.catch { error in
@@ -76,13 +92,13 @@ struct NetworkService {
         }
     }
     
-    private static func loginRequest() -> Promise<Void> {
+    private static func loginRequest(loginRequest:LoginRequest) -> Promise<Void> {
         
         return Promise { promise in
             
-            AF.request(NetworkConstants.loginURL,
+            AF.request(NetworkConstants.loginURL(loginRequestData.baseURL),
                        method: .post,
-                       parameters: LoginRequest.testuser,
+                       parameters: loginRequest,
                        encoder: JSONParameterEncoder.default)
             .validate()
             .responseDecodable(of:LoginResponse.self) { response in
@@ -104,7 +120,7 @@ struct NetworkService {
         
         return Promise { promise in
             
-            AF.request(NetworkConstants.orderURL,
+            AF.request(NetworkConstants.orderURL(loginRequestData.baseURL),
                        method: .post,
                        parameters: NetworkConstants.getOrderQuery,
                        encoding: JSONEncoding.default,

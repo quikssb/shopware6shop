@@ -10,6 +10,7 @@ import SwiftUI
 import SDWebImageSwiftUI
 
 //TODO: give scrolling of items space of whole view
+//TODO: use same button style as in login
 struct OrderDetailView: View {
     
     var order:Order
