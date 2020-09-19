@@ -9,5 +9,6 @@
 import Foundation
 
 struct LoginResponse: Codable {
+    
     var access_token: String
 }

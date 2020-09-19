@@ -55,7 +55,6 @@ struct LoginView: View {
                 self.loginDisabled = true
                 self.login()
             }) {
-                
                 Text(buttonText)
                     .font(.headline)
                     .foregroundColor(.white)
