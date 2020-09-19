@@ -9,6 +9,7 @@
 import SwiftUI
 import SDWebImageSwiftUI
 
+//TODO: give scrolling of items space of whole view
 struct OrderDetailView: View {
     
     var order:Order
