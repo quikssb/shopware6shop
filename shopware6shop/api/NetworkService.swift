@@ -24,8 +24,7 @@ struct NetworkService {
                 if(httpCode == 401) {
                 
                     loginRequest()
-                    .done { loginResponse in
-                        token = loginResponse.access_token
+                    .done {
                         getOrders(completion: completion)
                     }.catch { error in
                         completion(nil, error)
@@ -65,8 +64,7 @@ struct NetworkService {
                 if(httpCode == 401) {
                 
                     loginRequest()
-                    .done { loginResponse in
-                        token = loginResponse.access_token
+                    .done {
                         shipAndCompleteOrder(orderDeliveryId: orderDeliveryId, warehouseId: warehouseId, orderId: orderId,completion: completion)
                     }.catch { error in
                         completion(false, error)
@@ -74,6 +72,30 @@ struct NetworkService {
                 }
             } else {
                 completion(false, error)
+            }
+        }
+    }
+    
+    private static func loginRequest() -> Promise<Void> {
+        
+        return Promise { promise in
+            
+            AF.request(NetworkConstants.loginURL,
+                       method: .post,
+                       parameters: LoginRequest.testuser,
+                       encoder: JSONParameterEncoder.default)
+            .validate()
+            .responseDecodable(of:LoginResponse.self) { response in
+                        
+                switch response.result {
+                    
+                case .success(let loginResponse):
+                    token = loginResponse.access_token
+                    promise.fulfill(())
+                    
+                case .failure(let error):
+                    promise.reject(error)
+                }
             }
         }
     }
@@ -93,35 +115,7 @@ struct NetworkService {
                 switch response.result {
                     
                 case .success(let orders):
-                    
-                    if(response.response?.statusCode == 401) {
-                        promise.reject(AFError.responseValidationFailed(reason: .dataFileNil))
-                    }
-                    
                     promise.fulfill(orders)
-                    
-                case .failure(let error):
-                    promise.reject(error)
-                }
-            }
-        }
-    }
-    
-    private static func loginRequest() -> Promise<LoginResponse> {
-        
-        return Promise { promise in
-            
-            AF.request(NetworkConstants.loginURL,
-                       method: .post,
-                       parameters: LoginRequest.testuser,
-                       encoder: JSONParameterEncoder.default)
-            .validate()
-            .responseDecodable(of:LoginResponse.self) { response in
-                        
-                switch response.result {
-                    
-                case .success(let loginResponse):
-                    promise.fulfill(loginResponse)
                     
                 case .failure(let error):
                     promise.reject(error)

@@ -59,6 +59,7 @@ struct OrderDetailView: View {
             
             HStack(alignment: .center) {
                 Button(action: {
+                    self.buttonDisabled = true
                     self.shipOrder()
                 }) {
                     Spacer()
@@ -82,7 +83,6 @@ struct OrderDetailView: View {
             completion:  {success, error in
                 
                 if(success) {
-                    self.buttonDisabled = true
                     self.buttonText = "Shipped"
                 } else {
                     self.buttonText = "Error"
