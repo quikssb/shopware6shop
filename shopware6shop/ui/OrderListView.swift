@@ -25,13 +25,12 @@ struct OrderListView: View {
     
     private func loadOrders() {
         
-        NetworkService.getOrders(completion: {orderResponse in
+        NetworkService.getOrders(completion: {orders, error in
             
-            if let ordersFromServer = orderResponse.orders {
+            if let ordersFromServer = orders {
                 self.orders.orders = ordersFromServer.data
-            } else {
-                //TODO: show little message, equivalent to Toast in Android
-                print(orderResponse.printedError ?? "An error occured")
+            } else if let error = error {
+                print(error.localizedDescription)
             }
         })
     }

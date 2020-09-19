@@ -86,6 +86,7 @@ struct OrderDetailView: View {
                     self.buttonText = "Shipped"
                 } else {
                     self.buttonText = "Error"
+                    print(error.debugDescription)
                 }
         })
     }
