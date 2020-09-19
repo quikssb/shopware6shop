@@ -19,7 +19,7 @@ struct OrderRowView: View {
             
                 VStack(alignment: .leading) {
                     Text("Order number: \(order.orderNumber)")
-                    Text(order.orderDateTimeFormatted)
+                    Text(OrderListView.dateTimeFormatted(order.orderDateTime))
                 }
                 
                 Spacer()

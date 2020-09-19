@@ -9,5 +9,6 @@
 import Foundation
 
 struct MediaType:Codable {
+    
     var name:String
 }

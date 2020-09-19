@@ -9,52 +9,20 @@
 import Foundation
 
 struct Stock: Codable, Identifiable {
-    
-    enum LocationTypeKey: String {
-        case warehouse = "warehouse"
-        case binLocation = "bin_location"
-    }
 
     var id:String
     var quantity:Int
-    var locationTypeTechnicalName:String
     var warehouse:Warehouse?
     var binLocation:BinLocation?
-    var specialStockLocationTechnicalName:String?
     
-    //TODO: use where clauses
-    //consider removing enum and just check properties for nil
-    var mainWarehouse:Warehouse? {
-
-        switch locationTypeTechnicalName {
-            
-        case LocationTypeKey.warehouse.rawValue:
-            if let warehouse = warehouse {
-                if(warehouse.isDefault) {
-                    return warehouse
-                }
-            }
-            
-        case LocationTypeKey.binLocation.rawValue:
-            if let warehouse = binLocation?.warehouse {
-                if(warehouse.isDefault) {
-                    return warehouse
-                }
-            }
-            
-        default:
-            return nil
-        }
+    var filteredWarehouse:Warehouse? {
         
-        return nil
-    }
-    
-    var warehouseName:String {
-        
-        if let warehouse = mainWarehouse {
-            return warehouse.name
+        if let warehouse = warehouse {
+            return warehouse
+        } else if let warehouse = binLocation?.warehouse {
+            return warehouse
         } else {
-            return locationTypeTechnicalName
+            return nil
         }
     }
 }

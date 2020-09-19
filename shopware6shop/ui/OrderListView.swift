@@ -7,6 +7,7 @@
 //
 
 import SwiftUI
+import SwiftDate
 
 struct OrderListView: View {
     
@@ -36,5 +37,16 @@ struct OrderListView: View {
                 print(error.localizedDescription)
             }
         })
+    }
+    
+    public static var dateTimeFormatted = { (dateTimeString: String) -> String in
+        
+        let dateFormat = "dd.MM.yyyy HH:mm"
+
+        if let formattedDate = dateTimeString.toDate() {
+            return "\(formattedDate.toFormat(dateFormat))"
+        } else {
+            return ""
+        }
     }
 }

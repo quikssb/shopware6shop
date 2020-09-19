@@ -9,67 +9,34 @@
 import Foundation
 
 struct Product:Codable {
+    
     var extensions:Extension
     var media:[Media]
     
+    var mainWarehouse:Warehouse? {
+        
+        return extensions.pickwareErpStocks.filter {
+            $0.filteredWarehouse?.isDefault ?? false
+        }.first?.filteredWarehouse
+    }
+    
+    var mainWarehouseStockQuantity:Int {
+         
+        return extensions.pickwareErpStocks.reduce(into: 0) {
+            quantitySum, stock in
+            
+            if let warehouse = stock.filteredWarehouse {
+                if(warehouse.isDefault) {
+                    quantitySum += stock.quantity
+                }
+            }
+        }
+    }
+    
     var firstImageUrl:String? {
-        
-        var firstImageUrl:String?
-        
-        firstImageUrl = media.first
-            { $0.imageUrl != nil }?
-            .imageUrl
-        
-        return firstImageUrl
-    }
-    
-    //TODO: optimize logic of computing mainWarehouse and its functions
-    
-    var mainWarehouseAndQuantityDescription:String {
-                
-        var name:String = String()
-        
-        extensions.pickwareErpStocks.forEach() { stock in
-            
-            if let mainWarehouseTmp = stock.mainWarehouse{
-                name = mainWarehouseTmp.name
-            }
-        }
-        //TODO: ui logic into views
-        return "\(name), Quantity: \(getStockQuantityMainWarehouse(name: name))"
-    }
-    
-    var stockDescription:String {
-        
-        var description:String = String()
-        var index = 0
-        
-        extensions.pickwareErpStocks.forEach() { stock in
-            description += "Stock \(index) : \(stock.warehouseName), Quantity: \(stock.quantity)" + "\n"
-            index += 1
-        }
-        
-        return description
-    }
-    
-    func getMainWarehouseId() -> String {
-        
-        extensions.pickwareErpStocks.compactMap({
-            $0.mainWarehouse
-        }).first?.id ?? ""
-    }
-    
-    func getStockQuantityMainWarehouse(name: String) -> Int {
-        
-        var quantity = 0
-        
-        extensions.pickwareErpStocks.forEach() { stock in
-            
-            if(name == stock.warehouseName) {
-                quantity += stock.quantity
-            }
-        }
-        
-        return quantity
+ 
+        return media.first {
+            $0.imageUrl != nil
+        }?.imageUrl
     }
 }

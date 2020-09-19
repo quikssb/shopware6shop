@@ -23,7 +23,7 @@ struct OrderDetailView: View {
         
         VStack(alignment: .center) {
                 
-            Text("Order date: \(order.orderDateTimeFormatted)")
+            Text("Order date: \(OrderListView.dateTimeFormatted(order.orderDateTime))")
             Text(String("Number of items: \(order.lineItemsCount)"))
             Text(String("Shipping: \(order.shippingMethod)"))
             
@@ -45,7 +45,7 @@ struct OrderDetailView: View {
                             Text("Article Number:")
                             Text("\(item.productId)")
                             Text(String("Quantity: \(item.quantity)"))
-                            Text("Stock: \(item.product.mainWarehouseAndQuantityDescription)")
+                            Text("\(item.product.mainWarehouse?.name ?? "No main warehouse"), Quantity:  \(item.product.mainWarehouseStockQuantity)")
                             
                             //Note: SwiftUI doesn't like optional unwrapping..
                             if(item.product.firstImageUrl != nil) {
@@ -84,9 +84,19 @@ struct OrderDetailView: View {
         
         self.loading = true
         
+        guard let orderDeliveryId = self.order.deliveries.first?.id else {
+            print("orderDeliveryId not found")
+            return
+        }
+        
+        guard let warehouseId = self.order.lineItems.first?.product.mainWarehouse?.id else {
+            print("WarehouseId not found")
+            return
+        }
+        
         NetworkService.shipAndCompleteOrder(
-            orderDeliveryId: self.order.deliveries.first!.id,
-            warehouseId: self.order.lineItems.first!.product.getMainWarehouseId(),
+            orderDeliveryId: orderDeliveryId,
+            warehouseId: warehouseId,
             orderId: self.order.id,
             completion:  {success, error in
                 
